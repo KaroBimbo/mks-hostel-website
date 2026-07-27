@@ -939,7 +939,7 @@
 // цели: считаем намерения — клик по брони, телефону, мессенджеру, картам
 (function(){
   'use strict';
-  var MAP = {"booking": "reservationsteps.ru", "phone": "tel:", "whatsapp": "wa.me", "email": "mailto:", "maps": "yandex."};
+  var MAP = {"booking": "reservationsteps.ru", "make-call": "tel:", "whatsapp": "wa.me", "make-route": "yandex."};
   document.addEventListener('click', function(e){
     var a = e.target.closest && e.target.closest('a');
     if (!a || !a.href) return;
