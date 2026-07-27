@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mks-hostel.vercel.app/sitemap.xml
