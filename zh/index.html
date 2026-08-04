@@ -140,21 +140,31 @@
       "@type": "Answer",
       "text": "房间为混住，但我们保留一间以女性为主的房间，尽可能安排女性客人入住。名额请电话确认。"
      }
+    },
+    {
+     "@type": "Question",
+     "name": "去机场和市中心方便吗？",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "从 Moskovskaya 地铁站有直达普尔科沃机场的公交车，车程 15–20 分钟，车站距酒店步行约 10 分钟。乘地铁约 20 分钟直达市中心，无需换乘；到莫斯科火车站也约 20 分钟。"
+     }
     }
    ]
   }
  ]
 }
 </script>
-<meta name="description" content="太空站风格的胶囊酒店。未来感十足的太空舱，安静整洁，距 Moskovskaya 地铁站仅两分钟。每晚 1800 卢布起。">
+<meta name="description" content="太空站风格的胶囊酒店。未来感十足的太空舱，安静整洁，距 Moskovskaya 地铁站步行仅五分钟。每晚 1800 卢布起。">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Капсульный отель «МКС» в Санкт-Петербурге: полностью закрывающиеся капсулы, тишина и чистота в 2 минутах от метро «Московская». От 1 800 ₽ за ночь.">
 <meta property="og:title" content="MKS 太空舱酒店 — 圣彼得堡">
-<meta property="og:description" content="不出城市，就能在太空站过夜。距 Moskovskaya 地铁站两分钟，每晚 1800 卢布起。">
+<meta property="og:description" content="不出城市，就能在太空站过夜。距 Moskovskaya 地铁站步行五分钟，每晚 1800 卢布起。">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://mks-hostel.vercel.app/zh/">
 <meta property="og:image" content="https://mks-hostel.vercel.app/photos/kapsuly-siniy-neon.jpg">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='12' fill='none' stroke='%2352C7FF' stroke-width='3'/><circle cx='16' cy='16' r='5' fill='%2352C7FF'/></svg>">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
@@ -211,7 +221,7 @@
   nav.menu{display:flex;gap:22px;margin-left:auto}
   nav.menu a{color:var(--muted);text-decoration:none;font-size:13.5px;letter-spacing:.06em;text-transform:uppercase}
   nav.menu a:hover{color:var(--text)}
-  .lang-switch{font-family:var(--mono);font-size:12px;letter-spacing:.14em;color:var(--muted);text-decoration:none;border:1px solid var(--line);border-radius:8px;padding:6px 10px;transition:color .15s,border-color .15s}
+  .lang-switch{font-family:var(--mono);font-size:12px;letter-spacing:.14em;color:var(--muted);text-decoration:none;border:1px solid var(--line);border-radius:8px;padding:6px 10px;transition:color .15s,border-color .15s;white-space:nowrap}
   .lang-switch:hover{color:var(--accent);border-color:var(--accent)}
   .nav-tel{color:var(--muted);text-decoration:none;font-family:var(--mono);font-size:13px;letter-spacing:.05em;white-space:nowrap}
   .nav-tel:hover{color:var(--accent)}
@@ -221,6 +231,20 @@
   .btn:focus-visible, a:focus-visible, summary:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
   .btn.small{padding:9px 18px;font-size:13.5px}
   .btn.ghost{background:transparent;color:var(--accent);border:1px solid var(--accent);box-shadow:none}
+
+  /* 装饰元素不得把页面横向撑宽 */
+  html,body{overflow-x:clip}
+  /* 移动端页头：适配到 iPhone SE */
+  @media (max-width:700px){
+    .nav{gap:10px;padding:10px 12px}
+    .logo{font-size:15px;gap:8px}
+    .logo-ring{width:22px;height:22px}
+    .lang-switch{font-size:10.5px;padding:5px 7px;letter-spacing:.08em}
+    .btn.small{padding:8px 11px;font-size:12px}
+  }
+  @media (max-width:520px){
+    .logo-txt small{display:none}
+  }
 
   /* ── hero ── */
   .hero{padding:72px 0 84px}
@@ -405,6 +429,14 @@
   .strip.dragging img{transform:none}
   .strip-hint{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:.14em;text-transform:uppercase;padding:0 24px}
 
+  /* whyus */
+  .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .why-card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:22px 20px}
+  .why-card .ic{font-size:22px;margin-bottom:12px;color:var(--accent)}
+  .why-card h3{font-family:var(--disp);font-size:16px;letter-spacing:.05em;margin:0 0 10px;color:var(--text)}
+  .why-card p{margin:0;color:var(--muted);font-size:14.5px;line-height:1.65}
+  @media(max-width:900px){.why-grid{grid-template-columns:1fr 1fr}}
+  @media(max-width:620px){.why-grid{grid-template-columns:1fr}}
   /* faq */
   .faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
   details{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:0 20px}
@@ -480,6 +512,7 @@
       <a href="#why">关于我们</a>
       <a href="#capsule">太空舱</a>
       <a href="#modules">设施</a>
+      <a href="#dayuse">白天休息</a>
       <a href="#gallery">相册</a>
       <a href="#route">交通指南</a>
     </nav>
@@ -545,10 +578,29 @@
 <section class="factline" id="why" aria-label="酒店亮点">
   <div class="wrap fl-row">
     <span class="fl-item"><b>18</b> 个太空舱 — 每个都可完全关闭</span>
-    <span class="fl-item"><b>2 分钟</b>到 Moskovskaya 地铁站</span>
+    <span class="fl-item"><b>5 分钟</b>步行到 Moskovskaya 地铁站</span>
+    <span class="fl-item"><b>20 分钟</b>到普尔科沃机场</span>
+    <span class="fl-item"><b>20 分钟</b>地铁到市中心</span>
     <span class="fl-item"><b>24/7</b> 前台全天值班</span>
     <span class="fl-item"><b>电视 · 保险箱 · 插座</b> 每舱齐备</span>
     <span class="fl-item"><b>Wi-Fi</b> 与监控</span>
+  </div>
+</section>
+
+<section id="benefits" class="dock">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">航行日志</div>
+      <h2>为什么选择 MKS</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-card"><div class="ic">✈</div><h3>完美的出发点</h3><p>城市交通在此交汇：步行 10 分钟到 39/39Э 路公交车站，直达普尔科沃机场、全程不堵车，运营时间早 5 点至凌晨 2 点，票价固定。打车到机场约 15 分钟。</p></div>
+      <div class="why-card"><div class="ic">Ⓜ</div><h3>步行 5 分钟到地铁</h3><p>Moskovskaya 地铁站距门口步行 5 分钟，运营时间 5:30–0:40，约 20 分钟可达市中心和主要火车站。打车到涅瓦大街约 20 分钟。</p></div>
+      <div class="why-card"><div class="ic">🛰</div><h3>全新的«空间站»</h3><p>2026 年开业：全新装修、精心设计，从太空舱到厨房都崭新如初。网站上的照片全部为实拍。</p></div>
+      <div class="why-card"><div class="ic">🚪</div><h3>全封闭太空舱，而非帘子床位</h3><p>每个床位都是完全封闭的太空舱，配有独立通风、灯光、电视、插座和保险箱。可以睡觉、办公，或关上舱门独享安静。床品为条纹贡缎，如高品质酒店。</p></div>
+      <div class="why-card"><div class="ic">🌙</div><h3>市中心没有的宁静</h3><p>酒店位于封闭式住宅区内院，远离酒吧和夜晚喧嚣。午夜后格外安静——赶早班机前能真正睡个好觉。</p></div>
+      <div class="why-card"><div class="ic">☕</div><h3>短暂停留所需的一切</h3><p>24 小时办理入住，深夜抵达也没问题。提供一次性洗漱用品、干净的淋浴间和卫生间、厨房与熨烫区，还可点一杯现磨咖啡。</p></div>
+    </div>
   </div>
 </section>
 
@@ -597,6 +649,24 @@
       <div class="price-line"><span class="num">1800 ₽ 起</span><span class="per">每晚</span></div>
       <a class="btn" href="https://reservationsteps.ru/rooms/index/ea21fb37-1ed7-4f28-902e-545dd8283dc3?lang=en" target="_blank" rel="noopener">选择日期</a>
     </div>
+  </div>
+</section>
+
+<section id="dayuse" class="dock">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">中转模式</div>
+      <h2>白天休息 · 航班间隙的太空舱</h2>
+      <p>租用太空舱几个小时：倒时差补觉、洗个热水澡、安静办公。转机首选 — 距离普尔科沃机场仅 20 分钟。</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card"><div class="ic">⏱</div><h3>6 小时 — 900 ₽</h3><p>10:00–21:00 之间任选 6 小时（例如 12:00–18:00）。含淋浴、Wi-Fi 和行李寄存。</p></div>
+      <div class="why-card"><div class="ic">🌤</div><h3>全天 — 1300 ₽</h3><p>太空舱 10:00–21:00 全天属于您：早上抵达，寄存行李，按自己的节奏安排一天。</p></div>
+      <div class="why-card"><div class="ic">🎒</div><h3>行李寄存 — 免费</h3><p>把背包或行李箱交给我们，轻装游览城市 — 无需预订白天休息也可寄存。</p></div>
+    </div>
+    <p style="margin:18px 0 14px">白天休息由前台确认 — 请通过 WhatsApp 或电话联系我们，几分钟内回复。入住需出示护照。</p>
+    <a class="btn" href="https://wa.me/79312602500?text=Hello!%20I%20would%20like%20to%20book%20a%20day%20stay%20in%20a%20capsule" target="_blank" rel="noopener">通过 WhatsApp 预订</a>
+    <a class="btn ghost" href="tel:+79312602500" style="margin-left:10px">拨打电话</a>
   </div>
 </section>
 
@@ -657,6 +727,10 @@
         <summary>有男女分区吗？</summary>
         <p>房间为混住，但我们保留一间以女性为主的房间，尽可能安排女性客人入住。名额请电话确认。</p>
       </details>
+      <details>
+        <summary>去机场和市中心方便吗？</summary>
+        <p>非常方便：从 Moskovskaya 地铁站有直达普尔科沃机场的公交车，车程 15–20 分钟，车站距酒店步行约 10 分钟。乘地铁约 20 分钟直达市中心，无需换乘；到莫斯科火车站也约 20 分钟。适合商务出行和赶早班机——交通便利，夜晚小区安静。</p>
+      </details>
     </div>
   </div>
 </section>
@@ -675,9 +749,10 @@
         <li><span class="n">2</span><p>沿 Moskovsky Prospekt 走到 <b>Graf Orlov</b> 小区。在大门按 <b>5B</b> 即可进入。</p></li>
         <li><span class="n">3</span><p>进门后立即<b>右转</b>，沿坡道上行。</p></li>
         <li><span class="n">4</span><p>沿院子左侧走到<b>最后一个楼梯</b> — 之后跟随 “MKS →” 指示牌。</p></li>
-        <li><span class="n">5</span><p>到三楼后往回走 — 右手边就是 <b>“MKS”</b> 的门。欢迎登舱！</p></li>
+        <li><span class="n">5</span><p>沿楼梯上到顶层（二楼）后往回走 — 右手边就是 <b>“MKS”</b> 的门。欢迎登舱！</p></li>
       </ol>
       <div class="addr">俄罗斯圣彼得堡<br>Moskovsky Prospekt 183–185 号 4 栋</div>
+      <div class="addr">✈ 普尔科沃机场 — 15–20 分钟：从 Moskovskaya 有直达公交，车站步行约 10 分钟<br>Ⓜ 市中心 — 地铁约 20 分钟，无需换乘 · 莫斯科火车站约 20 分钟<br>安静的居住区：交通便利，没有市中心的喧嚣</div>
       <a class="btn ghost small" href="https://yandex.com/maps/org/mks/128790218160/" target="_blank" rel="noopener">在 Yandex 地图中打开</a>
     </div>
   </div>
@@ -710,6 +785,7 @@
       
     </div>
   </div>
+  <div class="wrap" style="border-top:1px solid var(--line);margin-top:28px;padding-top:16px;font-family:var(--mono);font-size:12px;color:var(--muted);letter-spacing:.03em">个体经营者 Lebedeva Marina Petrovna · INN 781105265180 · OGRNIP 306784726100312 · <a href="/oferta/" style="color:var(--muted)">预订条款（俄文）</a></div>
 </footer>
 
 <script>

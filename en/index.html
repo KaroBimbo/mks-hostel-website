@@ -140,13 +140,21 @@
       "@type": "Answer",
       "text": "Rooms are mixed, but we keep one room primarily for women and place female guests there whenever possible. Call us to check availability."
      }
+    },
+    {
+     "@type": "Question",
+     "name": "Is it easy to reach the airport and the city centre?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "A direct bus to Pulkovo Airport runs from Moskovskaya metro — 15–20 minutes, with the stop a ten-minute walk from the hotel. The city centre is about 20 minutes away by metro, no transfers; Moskovsky railway station is about 20 minutes too."
+     }
     }
    ]
   }
  ]
 }
 </script>
-<meta name="description" content="A space-station-style capsule hotel. Futuristic pods, quiet and spotless, two minutes from Moskovskaya metro. From ₽1,800 per night.">
+<meta name="description" content="A space-station-style capsule hotel. Futuristic pods, quiet and spotless, five minutes from Moskovskaya metro. From ₽1,800 per night.">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Капсульный отель «МКС» в Санкт-Петербурге: полностью закрывающиеся капсулы, тишина и чистота в 2 минутах от метро «Московская». От 1 800 ₽ за ночь.">
 <meta property="og:title" content="MKS — Capsule Hotel in Saint Petersburg">
@@ -154,7 +162,9 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://mks-hostel.vercel.app/en/">
 <meta property="og:image" content="https://mks-hostel.vercel.app/photos/kapsuly-siniy-neon.jpg">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='12' fill='none' stroke='%2352C7FF' stroke-width='3'/><circle cx='16' cy='16' r='5' fill='%2352C7FF'/></svg>">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
@@ -211,7 +221,7 @@
   nav.menu{display:flex;gap:22px;margin-left:auto}
   nav.menu a{color:var(--muted);text-decoration:none;font-size:13.5px;letter-spacing:.06em;text-transform:uppercase}
   nav.menu a:hover{color:var(--text)}
-  .lang-switch{font-family:var(--mono);font-size:12px;letter-spacing:.14em;color:var(--muted);text-decoration:none;border:1px solid var(--line);border-radius:8px;padding:6px 10px;transition:color .15s,border-color .15s}
+  .lang-switch{font-family:var(--mono);font-size:12px;letter-spacing:.14em;color:var(--muted);text-decoration:none;border:1px solid var(--line);border-radius:8px;padding:6px 10px;transition:color .15s,border-color .15s;white-space:nowrap}
   .lang-switch:hover{color:var(--accent);border-color:var(--accent)}
   .nav-tel{color:var(--muted);text-decoration:none;font-family:var(--mono);font-size:13px;letter-spacing:.05em;white-space:nowrap}
   .nav-tel:hover{color:var(--accent)}
@@ -221,6 +231,20 @@
   .btn:focus-visible, a:focus-visible, summary:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
   .btn.small{padding:9px 18px;font-size:13.5px}
   .btn.ghost{background:transparent;color:var(--accent);border:1px solid var(--accent);box-shadow:none}
+
+  /* hero decor must not stretch the page sideways */
+  html,body{overflow-x:clip}
+  /* mobile header: fits down to iPhone SE */
+  @media (max-width:700px){
+    .nav{gap:10px;padding:10px 12px}
+    .logo{font-size:15px;gap:8px}
+    .logo-ring{width:22px;height:22px}
+    .lang-switch{font-size:10.5px;padding:5px 7px;letter-spacing:.08em}
+    .btn.small{padding:8px 11px;font-size:12px}
+  }
+  @media (max-width:520px){
+    .logo-txt small{display:none}
+  }
 
   /* ── hero ── */
   .hero{padding:72px 0 84px}
@@ -405,6 +429,14 @@
   .strip.dragging img{transform:none}
   .strip-hint{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:.14em;text-transform:uppercase;padding:0 24px}
 
+  /* whyus */
+  .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .why-card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:22px 20px}
+  .why-card .ic{font-size:22px;margin-bottom:12px;color:var(--accent)}
+  .why-card h3{font-family:var(--disp);font-size:16px;letter-spacing:.05em;margin:0 0 10px;color:var(--text)}
+  .why-card p{margin:0;color:var(--muted);font-size:14.5px;line-height:1.65}
+  @media(max-width:900px){.why-grid{grid-template-columns:1fr 1fr}}
+  @media(max-width:620px){.why-grid{grid-template-columns:1fr}}
   /* faq */
   .faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
   details{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:0 20px}
@@ -480,6 +512,7 @@
       <a href="#why">About</a>
       <a href="#capsule">Capsules</a>
       <a href="#modules">Facilities</a>
+      <a href="#dayuse">Day rest</a>
       <a href="#gallery">Gallery</a>
       <a href="#route">Getting here</a>
     </nav>
@@ -545,10 +578,29 @@
 <section class="factline" id="why" aria-label="Hotel highlights">
   <div class="wrap fl-row">
     <span class="fl-item"><b>18</b> capsules — each closes completely</span>
-    <span class="fl-item"><b>2 min</b> from Moskovskaya metro</span>
+    <span class="fl-item"><b>5 min</b> walk to Moskovskaya metro</span>
+    <span class="fl-item"><b>20 min</b> to Pulkovo Airport</span>
+    <span class="fl-item"><b>20 min</b> to the centre by metro</span>
     <span class="fl-item"><b>24/7</b> reception on board</span>
     <span class="fl-item"><b>TV · safe · sockets</b> in every capsule</span>
     <span class="fl-item"><b>Wi-Fi</b> and CCTV</span>
+  </div>
+</section>
+
+<section id="benefits" class="dock">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Ship's log</div>
+      <h2>Why guests choose MKS</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-card"><div class="ic">✈</div><h3>The perfect launch point</h3><p>A rare spot where all the city's logistics meet. A 10-minute walk to bus 39/39E running straight to Pulkovo Airport with zero traffic — from 5 am to 2 am, always at a fixed city-bus fare. A taxi to the airport takes about 15 minutes.</p></div>
+      <div class="why-card"><div class="ic">Ⓜ</div><h3>Metro five minutes away</h3><p>Moskovskaya station is a 5-minute walk from our door. The metro runs 5:30–0:40; the centre and the main railway stations are about 20 minutes away. A taxi to Nevsky Prospekt takes about twenty.</p></div>
+      <div class="why-card"><div class="ic">🛰</div><h3>A genuinely new station</h3><p>Opened in 2026: fresh fit-out, carefully considered design, nothing worn out — from the capsules to the kitchen. Every photo on this site is our own.</p></div>
+      <div class="why-card"><div class="ic">🚪</div><h3>A capsule, not a bunk with a curtain</h3><p>Each bed is a fully enclosed capsule with its own ventilation, light, TV, sockets and a safe. Sleep, work, or simply shut the door on the world. Crisp stripe-sateen bedding, like in a good hotel.</p></div>
+      <div class="why-card"><div class="ic">🌙</div><h3>Quiet the centre can't offer</h3><p>We are inside a gated residential courtyard, away from bars and downtown bustle. It is genuinely silent after midnight — you will actually sleep before an early flight.</p></div>
+      <div class="why-card"><div class="ic">☕</div><h3>Everything for a short stopover</h3><p>24/7 check-in — arrive even in the middle of the night. Disposable hygiene kits, clean showers and bathrooms, a kitchen, an ironing station — and freshly brewed coffee to order.</p></div>
+    </div>
   </div>
 </section>
 
@@ -597,6 +649,24 @@
       <div class="price-line"><span class="num">from ₽1,800</span><span class="per">per night</span></div>
       <a class="btn" href="https://reservationsteps.ru/rooms/index/ea21fb37-1ed7-4f28-902e-545dd8283dc3?lang=en" target="_blank" rel="noopener">Choose dates</a>
     </div>
+  </div>
+</section>
+
+<section id="dayuse" class="dock">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Transit mode</div>
+      <h2>Day rest between flights</h2>
+      <p>A capsule for a few hours: sleep off a red-eye, take a shower, work in silence. Perfect for layovers — we are 20 minutes from Pulkovo airport.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card"><div class="ic">⏱</div><h3>6 hours — ₽900</h3><p>Any 6-hour slot between 10:00 and 21:00 — for example, noon to 6 pm. Shower, Wi-Fi and luggage storage included.</p></div>
+      <div class="why-card"><div class="ic">🌤</div><h3>Full day — ₽1,300</h3><p>The capsule is yours from 10:00 to 21:00. Arrive in the morning, drop your bags and follow your own pace.</p></div>
+      <div class="why-card"><div class="ic">🎒</div><h3>Luggage — free</h3><p>Leave your backpack or suitcase with us and explore the city hands-free — day stay not required.</p></div>
+    </div>
+    <p style="margin:18px 0 14px">Day stays are confirmed by our front desk — message or call us, we reply within minutes. A passport is required at check-in.</p>
+    <a class="btn" href="https://wa.me/79312602500?text=Hello!%20I%20would%20like%20to%20book%20a%20day%20stay%20in%20a%20capsule" target="_blank" rel="noopener">Book a day stay on WhatsApp</a>
+    <a class="btn ghost" href="tel:+79312602500" style="margin-left:10px">Call us</a>
   </div>
 </section>
 
@@ -657,6 +727,10 @@
         <summary>Are there female and male areas?</summary>
         <p>Rooms are mixed, but we keep one room primarily for women and place female guests there whenever possible. Call us to check availability.</p>
       </details>
+      <details>
+        <summary>Is it easy to reach the airport and the city centre?</summary>
+        <p>Very: a direct bus to Pulkovo Airport runs from Moskovskaya — 15–20 minutes, with the stop a ten-minute walk from our door. The centre is about 20 minutes away by metro, no transfers, and Moskovsky railway station is about 20 minutes too. Handy for business trips and early flights — and the neighbourhood stays quiet at night.</p>
+      </details>
     </div>
   </div>
 </section>
@@ -675,9 +749,10 @@
         <li><span class="n">2</span><p>Walk along Moskovsky Prospekt to the <b>Graf Orlov</b> residential complex. Dial <b>5B</b> at the gate to enter.</p></li>
         <li><span class="n">3</span><p>Right after the gate turn <b>right</b> and walk up the ramp.</p></li>
         <li><span class="n">4</span><p>Keep to the left side of the courtyard until <b>the last staircase</b> — then follow the “MKS →” signs.</p></li>
-        <li><span class="n">5</span><p>On the third floor walk back the other way — the <b>“MKS”</b> door is on your right. Welcome aboard!</p></li>
+        <li><span class="n">5</span><p>At the top of the stairs, on the second floor, walk back the other way — the <b>“MKS”</b> door is on your right. Welcome aboard!</p></li>
       </ol>
       <div class="addr">183–185 Moskovsky Prospekt, building 4,<br>Saint Petersburg, Russia</div>
+      <div class="addr">✈ Pulkovo Airport — 15–20 min: direct bus from Moskovskaya, the stop is a 10-minute walk away<br>Ⓜ City centre — about 20 min by metro, no transfers · Moskovsky railway station — ~20 min<br>Quiet residential block: all the logistics nearby, none of the downtown noise</div>
       <a class="btn ghost small" href="https://yandex.com/maps/org/mks/128790218160/" target="_blank" rel="noopener">Open in Yandex Maps</a>
     </div>
   </div>
@@ -710,6 +785,7 @@
       
     </div>
   </div>
+  <div class="wrap" style="border-top:1px solid var(--line);margin-top:28px;padding-top:16px;font-family:var(--mono);font-size:12px;color:var(--muted);letter-spacing:.03em">Sole proprietor Lebedeva Marina Petrovna · INN 781105265180 · OGRNIP 306784726100312 · <a href="/oferta/" style="color:var(--muted)">Booking terms (Russian)</a></div>
 </footer>
 
 <script>

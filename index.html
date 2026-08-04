@@ -140,6 +140,14 @@
       "@type": "Answer",
       "text": "Зоны общие, но есть условно женская комната — по возможности мы всегда селим туда женщин. Наличие мест в ней уточняйте по телефону."
      }
+    },
+    {
+     "@type": "Question",
+     "name": "Удобно ли добираться до аэропорта и центра?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "До аэропорта Пулково — прямой автобус от метро «Московская», 15–20 минут в пути, остановка в 10 минутах пешком от отеля. До центра — около 20 минут на метро без пересадок, до Московского вокзала — тоже около 20 минут."
+     }
     }
    ]
   }
@@ -148,13 +156,15 @@
 </script>
 <meta name="description" content="Капсульный хостел в стиле космической станции. Футуристичные капсулы, тишина и чистота в двух шагах от метро «Московская». От 1800 ₽ за ночь.">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Капсульный отель «МКС» в Санкт-Петербурге: полностью закрывающиеся капсулы, тишина и чистота в 2 минутах от метро «Московская». От 1 800 ₽ за ночь.">
+<meta name="description" content="Капсульный отель «МКС» в Санкт-Петербурге: полностью закрывающиеся капсулы, тишина и чистота в 5 минутах от метро «Московская». От 1 800 ₽ за ночь.">
 <meta property="og:title" content="Капсульный отель «МКС» — переночуйте на космической станции">
 <meta property="og:description" content="Футуристичные капсулы в двух шагах от метро «Московская». От 1 800 ₽ за ночь.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://mks-hostel.vercel.app/">
 <meta property="og:image" content="https://mks-hostel.vercel.app/photos/kapsuly-siniy-neon.jpg">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='12' fill='none' stroke='%2352C7FF' stroke-width='3'/><circle cx='16' cy='16' r='5' fill='%2352C7FF'/></svg>">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
@@ -211,7 +221,7 @@
   nav.menu{display:flex;gap:22px;margin-left:auto}
   nav.menu a{color:var(--muted);text-decoration:none;font-size:13.5px;letter-spacing:.06em;text-transform:uppercase}
   nav.menu a:hover{color:var(--text)}
-  .lang-switch{font-family:var(--mono);font-size:12px;letter-spacing:.14em;color:var(--muted);text-decoration:none;border:1px solid var(--line);border-radius:8px;padding:6px 10px;transition:color .15s,border-color .15s}
+  .lang-switch{font-family:var(--mono);font-size:12px;letter-spacing:.14em;color:var(--muted);text-decoration:none;border:1px solid var(--line);border-radius:8px;padding:6px 10px;transition:color .15s,border-color .15s;white-space:nowrap}
   .lang-switch:hover{color:var(--accent);border-color:var(--accent)}
   .nav-tel{color:var(--muted);text-decoration:none;font-family:var(--mono);font-size:13px;letter-spacing:.05em;white-space:nowrap}
   .nav-tel:hover{color:var(--accent)}
@@ -221,6 +231,20 @@
   .btn:focus-visible, a:focus-visible, summary:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
   .btn.small{padding:9px 18px;font-size:13.5px}
   .btn.ghost{background:transparent;color:var(--accent);border:1px solid var(--accent);box-shadow:none}
+
+  /* декор героя не должен растягивать страницу вбок */
+  html,body{overflow-x:clip}
+  /* мобильная шапка: умещается вплоть до iPhone SE */
+  @media (max-width:700px){
+    .nav{gap:10px;padding:10px 12px}
+    .logo{font-size:15px;gap:8px}
+    .logo-ring{width:22px;height:22px}
+    .lang-switch{font-size:10.5px;padding:5px 7px;letter-spacing:.08em}
+    .btn.small{padding:8px 11px;font-size:12px}
+  }
+  @media (max-width:520px){
+    .logo-txt small{display:none}
+  }
 
   /* ── hero ── */
   .hero{padding:72px 0 84px}
@@ -405,6 +429,14 @@
   .strip.dragging img{transform:none}
   .strip-hint{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:.14em;text-transform:uppercase;padding:0 24px}
 
+  /* whyus */
+  .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .why-card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:22px 20px}
+  .why-card .ic{font-size:22px;margin-bottom:12px;color:var(--accent)}
+  .why-card h3{font-family:var(--disp);font-size:16px;letter-spacing:.05em;margin:0 0 10px;color:var(--text)}
+  .why-card p{margin:0;color:var(--muted);font-size:14.5px;line-height:1.65}
+  @media(max-width:900px){.why-grid{grid-template-columns:1fr 1fr}}
+  @media(max-width:620px){.why-grid{grid-template-columns:1fr}}
   /* faq */
   .faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
   details{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:0 20px}
@@ -480,6 +512,7 @@
       <a href="#why">Об отеле</a>
       <a href="#capsule">Капсулы</a>
       <a href="#modules">Удобства</a>
+      <a href="#dayuse">Отдых днём</a>
       <a href="#gallery">Галерея</a>
       <a href="#route">Как добраться</a>
     </nav>
@@ -545,10 +578,29 @@
 <section class="factline" id="why" aria-label="Главное об отеле">
   <div class="wrap fl-row">
     <span class="fl-item"><b>18</b> капсул — каждая закрывается полностью</span>
-    <span class="fl-item"><b>2 мин</b> от метро «Московская»</span>
+    <span class="fl-item"><b>5 мин</b> пешком до метро «Московская»</span>
+    <span class="fl-item"><b>20 мин</b> до аэропорта Пулково</span>
+    <span class="fl-item"><b>20 мин</b> до центра на метро</span>
     <span class="fl-item"><b>24/7</b> администратор на борту</span>
     <span class="fl-item"><b>ТВ · сейф · розетки</b> в каждой капсуле</span>
     <span class="fl-item"><b>Wi-Fi</b> и видеонаблюдение</span>
+  </div>
+</section>
+
+<section id="benefits" class="dock">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Бортовой журнал</div>
+      <h2>Почему выбирают МКС</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-card"><div class="ic">✈</div><h3>Точка идеального старта</h3><p>Редкое место, где сходится вся логистика города. 10 минут пешком — остановка автобуса №39/39Э, который идёт прямо в Пулково без единой пробки: рейсы с 5 утра до 2 ночи, цена всегда одна — как у любого городского автобуса. На такси до аэропорта — около 15 минут.</p></div>
+      <div class="why-card"><div class="ic">Ⓜ</div><h3>Метро в пяти минутах</h3><p>Вход на «Московскую» — 5 минут пешком от двери. Метро работает с 5:30 до 0:40, до центра и главных вокзалов — около 20 минут. На такси до Невского — минут двадцать.</p></div>
+      <div class="why-card"><div class="ic">🛰</div><h3>Станция новая — во всех смыслах</h3><p>Отель открылся в 2026 году: свежий ремонт, продуманный до мелочей дизайн, ничего «уставшего» — от капсул до кухни. Всё на фото — наше настоящее.</p></div>
+      <div class="why-card"><div class="ic">🚪</div><h3>Капсула, а не койка со шторкой</h3><p>Каждое место — полностью закрывающаяся капсула с собственной вентиляцией, светом, ТВ, розетками и сейфом. Спать, работать или просто закрыть дверь и остаться наедине с собой. Бельё — гладкий страйп-сатин, как в хороших отелях.</p></div>
+      <div class="why-card"><div class="ic">🌙</div><h3>Тишина, которой нет в центре</h3><p>Мы внутри закрытого двора жилого квартала, вдали от баров и ночной суеты. После полуночи здесь по-настоящему тихо — вы выспитесь перед ранним рейсом, а не «переночуете».</p></div>
+      <div class="why-card"><div class="ic">☕</div><h3>Всё для короткой остановки</h3><p>Круглосуточное заселение — прилетайте хоть ночью. Одноразовые гигиенические наборы, чистые душевые и санузлы, кухня, гладильная — и свежесваренный кофе под заказ, чтобы утро началось правильно.</p></div>
+    </div>
   </div>
 </section>
 
@@ -597,6 +649,24 @@
       <div class="price-line"><span class="num">от 1 800 ₽</span><span class="per">за ночь</span></div>
       <a class="btn" href="https://reservationsteps.ru/rooms/index/ea21fb37-1ed7-4f28-902e-545dd8283dc3?lang=ru" target="_blank" rel="noopener">Выбрать даты</a>
     </div>
+  </div>
+</section>
+
+<section id="dayuse" class="dock">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Транзитный режим</div>
+      <h2>Отдых днём — между рейсами</h2>
+      <p>Капсула на несколько часов: выспаться после ночного перелёта, принять душ, поработать в тишине. Идеально при пересадке — мы в 20 минутах от Пулково.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card"><div class="ic">⏱</div><h3>6 часов — 900 ₽</h3><p>Любые 6 часов в окне с 10:00 до 21:00 — например, с 12:00 до 18:00. Душ, Wi-Fi и хранение багажа включены.</p></div>
+      <div class="why-card"><div class="ic">🌤</div><h3>Весь день — 1300 ₽</h3><p>Капсула в вашем распоряжении с 10:00 до 21:00. Приезжайте утром, оставляйте вещи и живите в своём ритме.</p></div>
+      <div class="why-card"><div class="ic">🎒</div><h3>Багаж — бесплатно</h3><p>Оставьте рюкзак или чемодан у нас и гуляйте по городу налегке — храним и без дневного заезда.</p></div>
+    </div>
+    <p style="margin:18px 0 14px">Дневное пребывание подтверждает администратор — напишите или позвоните, ответим за пару минут. При заселении нужен паспорт.</p>
+    <a class="btn" href="https://wa.me/79312602500?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D0%B1%D1%80%D0%BE%D0%BD%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D1%82%D1%8C%20%D0%B4%D0%BD%D0%B5%D0%B2%D0%BD%D0%BE%D0%B9%20%D0%BE%D1%82%D0%B4%D1%8B%D1%85%20%D0%B2%20%D0%BA%D0%B0%D0%BF%D1%81%D1%83%D0%BB%D0%B5" target="_blank" rel="noopener">Забронировать день в WhatsApp</a>
+    <a class="btn ghost" href="tel:+79312602500" style="margin-left:10px">Позвонить</a>
   </div>
 </section>
 
@@ -657,6 +727,10 @@
         <summary>Есть ли женские и мужские зоны?</summary>
         <p>Зоны общие, но есть условно женская комната — по возможности мы всегда селим туда женщин. Наличие мест в ней уточняйте по телефону.</p>
       </details>
+      <details>
+        <summary>Удобно ли добираться до аэропорта и центра?</summary>
+        <p>Очень: до Пулково — прямой автобус от «Московской», 15–20 минут в пути, остановка в 10 минутах пешком. До центра — около 20 минут на метро без пересадок, до Московского вокзала — тоже около 20 минут. Удобно в командировке и перед ранним вылетом — вся логистика рядом, а ночью в квартале тихо.</p>
+      </details>
     </div>
   </div>
 </section>
@@ -675,9 +749,10 @@
         <li><span class="n">2</span><p>Идите вдоль Московского проспекта до <b>ЖК «Граф Орлов»</b>. На воротах наберите <b>5В</b> — и вы на территории.</p></li>
         <li><span class="n">3</span><p>Сразу за воротами поверните <b>направо</b> и поднимитесь по пандусу.</p></li>
         <li><span class="n">4</span><p>Держитесь левой стороны двора до <b>последней лестницы</b> — дальше вас поведут указатели «МКС →».</p></li>
-        <li><span class="n">5</span><p>На третьем этаже пройдите в обратную сторону: по правую руку — дверь <b>«МКС»</b>. Добро пожаловать на борт!</p></li>
+        <li><span class="n">5</span><p>Поднявшись по лестнице до конца, на втором этаже пройдите в обратную сторону: по правую руку — дверь <b>«МКС»</b>. Добро пожаловать на борт!</p></li>
       </ol>
       <div class="addr">Санкт-Петербург, Московский проспект,<br>дом 183–185, корпус 4</div>
+      <div class="addr">✈ Аэропорт Пулково — 15–20 минут: прямой автобус от «Московской», остановка в 10 минутах пешком<br>Ⓜ Центр — около 20 минут на метро, без пересадок · Московский вокзал — тоже ~20 минут<br>Спальный квартал: вся логистика рядом, а шума центра нет</div>
       <a class="btn ghost small" href="https://yandex.ru/maps/org/mks/128790218160/" target="_blank" rel="noopener">Открыть в Яндекс.Картах</a>
     </div>
   </div>
@@ -710,6 +785,7 @@
       
     </div>
   </div>
+  <div class="wrap" style="border-top:1px solid var(--line);margin-top:28px;padding-top:16px;font-family:var(--mono);font-size:12px;color:var(--muted);letter-spacing:.03em">ИП Лебедева Марина Петровна · ИНН 781105265180 · ОГРНИП 306784726100312 · <a href="/oferta/" style="color:var(--muted)">Договор-оферта и правила</a></div>
 </footer>
 
 <script>
