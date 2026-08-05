@@ -138,18 +138,21 @@
     var canvas = document.getElementById('orbit-canvas');
     var cities = window.ORBIT_CITIES;
     if (!canvas || !cities || !cities.length) return;
+    var isMobile = !!(window.matchMedia && window.matchMedia('(max-width:640px)').matches);
     var ctx = canvas.getContext('2d');
     var s = worldSize();
-    var pts = new Array(cities.length);
+    var pts = [];
     for (var i = 0; i < cities.length; i++) {
+      if (isMobile && (i % 2 === 1)) continue; // мобильный бюджет: каждая вторая точка
       var c = cities[i];
-      pts[i] = {
+      pts.push({
         x: (c[3] + 180) / 360 * s.w,
         y: (90 - c[2]) / 180 * s.h,
         r: 0.6 + (i % 7) / 6 * 1.0,
         phase: i % 4,
-        night: 0
-      };
+        night: 0,
+        lon: c[3]
+      });
     }
 
     var reduced = reducedMotion();
@@ -169,7 +172,7 @@
     function recomputeNight() {
       var sub = window.OrbitSun ? window.OrbitSun.subsolar(new Date()) : { lon: 0 };
       for (var i = 0; i < pts.length; i++) {
-        var lon = cities[i][3];
+        var lon = pts[i].lon;
         var diff = Math.abs(((lon - sub.lon + 540) % 360) - 180); // 0..180
         var t = (diff - 75) / 30; // ширина размытия 75..105
         pts[i].night = t <= 0 ? 0 : (t >= 1 ? 1 : t);
@@ -693,5 +696,33 @@
     initLive();
   }
 
-  init();
+  // ── ленивый старт: тяжёлая инициализация только когда секция рядом со вьюпортом ──
+  var booted = false;
+  function bootOnce() {
+    if (booted) return;
+    booted = true;
+    init();
+  }
+
+  function boot() {
+    var root = document.getElementById('orbit');
+    if (!root) return;
+    if (typeof IntersectionObserver !== 'function') {
+      bootOnce();
+      return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      for (var i = 0; i < entries.length; i++) {
+        if (entries[i].isIntersecting) {
+          io.unobserve(root);
+          io.disconnect();
+          bootOnce();
+          return;
+        }
+      }
+    }, { rootMargin: '200px' });
+    io.observe(root);
+  }
+
+  boot();
 })();
