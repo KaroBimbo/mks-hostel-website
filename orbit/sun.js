@@ -25,7 +25,7 @@
       pts.push([px(lon), py(Math.atan(tanLat) / RAD)]);
     }
     // ночь лежит с полюса, противоположного знаку склонения
-    var edgeY = s.lat >= 0 ? h : 0;
+    var edgeY = s.lat >= 0 ? h + 50 : -50;
     var dstr = 'M' + pts[0][0].toFixed(1) + ' ' + edgeY;
     for (var i = 0; i < pts.length; i++) dstr += 'L' + pts[i][0].toFixed(1) + ' ' + pts[i][1].toFixed(1);
     dstr += 'L' + pts[pts.length - 1][0].toFixed(1) + ' ' + edgeY + 'Z';
