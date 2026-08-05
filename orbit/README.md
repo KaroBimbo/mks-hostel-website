@@ -4,6 +4,7 @@
 
 **Генерация данных:**
 - Карта мира: `python3 orbit/tools/make-world.py` (источник: [world.geo.json](https://github.com/johan/world.geo.json))
-- Города: `python3 orbit/tools/make-cities.py` (будет в Task 5)
+- Города: `python3 orbit/tools/make-cities.py worldcities.csv` (обязательный аргумент —
+  путь к CSV с городами, например [worldcities.csv (simplemaps)](https://simplemaps.com/data/world-cities))
 
 **Запуск тестов:** `node --test orbit/tests/`

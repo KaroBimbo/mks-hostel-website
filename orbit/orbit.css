@@ -43,7 +43,7 @@
      animation:orbit-btnpulse 1.6s ease-in-out infinite}
 @keyframes orbit-btnpulse{0%,100%{box-shadow:0 0 8px rgba(82,199,255,.45)}50%{box-shadow:0 0 24px rgba(143,123,255,.9)}}
 #orbit .sig.waiting{background:rgba(142,153,180,.18);color:#8E99B4;animation:none;cursor:default}
-#orbit .sig.caught{background:#52C7FF}
+#orbit .sig.caught{background:#52C7FF;animation:none}
 #orbit .sig:disabled{cursor:default}
 #orbit .rem{display:block;width:100%;margin-top:8px;padding:9px;border-radius:999px;
      border:1px solid rgba(126,168,255,.4);background:transparent;color:#52C7FF;

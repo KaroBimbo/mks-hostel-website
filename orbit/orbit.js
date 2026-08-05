@@ -213,8 +213,14 @@
 
     resize();
     recomputeNight();
-    window.addEventListener('resize', resize);
-    setInterval(recomputeNight, 60000);
+    window.addEventListener('resize', function () {
+      resize();
+      if (reduced) draw(0);
+    });
+    setInterval(function () {
+      recomputeNight();
+      if (reduced) draw(0);
+    }, 60000);
 
     if (reduced) {
       draw(0);
@@ -258,9 +264,14 @@
   var live = {
     hotelPasses: [], hotelPass: null,
     guestObs: null, guestLabel: null, guestPasses: [], guestPass: null,
-    caught: false, code: null,
+    caught: false, code: null, caughtDay: null,
     lastWhereFor: null
   };
+
+  var LOCALE_MAP = { ru: 'ru-RU', en: 'en-GB', zh: 'zh-CN' };
+  function locale() {
+    return LOCALE_MAP[i18n().lang] || 'ru-RU';
+  }
 
   function pad2(n) { return (n < 10 ? '0' : '') + n; }
 
@@ -278,7 +289,7 @@
   }
 
   function fmtClock(d) {
-    return d.toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' });
+    return d.toLocaleTimeString(locale(), { hour: '2-digit', minute: '2-digit' });
   }
 
   function dayWord(d, now) {
@@ -288,7 +299,7 @@
     var I = i18n();
     if (diff === 0) return I.today || 'сегодня';
     if (diff === 1) return I.tomorrow || 'завтра';
-    return d.toLocaleDateString('ru-RU', { day: '2-digit', month: '2-digit' });
+    return d.toLocaleDateString(locale(), { day: '2-digit', month: '2-digit' });
   }
 
   function fmtCountdown(ms) {
@@ -453,8 +464,8 @@
 
     if (remindBtn) remindBtn.disabled = !pass;
 
-    if (live.caught && localStorageGet('orbit_caught') !== todayKey(now)) {
-      live.caught = false; live.code = null;
+    if (live.caught && live.caughtDay !== todayKey(now)) {
+      live.caught = false; live.code = null; live.caughtDay = null;
     }
 
     if (!pass) {
@@ -481,7 +492,8 @@
     } else {
       btn.className = 'sig waiting';
       btn.disabled = true;
-      btn.textContent = (I.btnWaiting || 'оживёт в {T}').replace('{T}', fmtClock(pass.rise));
+      var opensAt = new Date(pass.rise.getTime() - 120000);
+      btn.textContent = (I.btnWaiting || 'оживёт в {T}').replace('{T}', fmtClock(opensAt));
     }
     if (toBooking) toBooking.classList.remove('show');
   }
@@ -491,13 +503,18 @@
     if (!pass || !window.OrbitPromo) return;
     var now = new Date();
     if (window.OrbitPromo.buttonState(now, pass) !== 'open') return;
+    var today = todayKey(now);
     // Защита от повторного срабатывания
-    if (live.caught && localStorageGet('orbit_caught') === todayKey(now)) {
+    if (live.caught && live.caughtDay === today) {
       return;
     }
     live.caught = true;
+    live.caughtDay = today;
     live.code = window.OrbitPromo.codeFor(now);
-    localStorageSet('orbit_caught', todayKey(now));
+    // localStorage — только для восстановления между визитами; источник истины на
+    // время сессии — live.caughtDay/live.code в памяти (работает и без localStorage,
+    // например в приватном режиме Safari).
+    localStorageSet('orbit_caught', JSON.stringify({ day: today, code: live.code }));
     goal('orbit_signal');
     updateSignal(now);
   }
@@ -626,11 +643,28 @@
     } catch (e) {}
   }
 
+  function readCaughtStorage() {
+    var raw = localStorageGet('orbit_caught');
+    if (!raw) return null;
+    try {
+      // Формат — JSON {day, code}. Код дня считается по UTC (OrbitPromo.codeFor),
+      // а «сегодня» — по локальной дате: после полуночи UTC пересчитанный код
+      // отличался бы от показанного гостю, поэтому храним и восстанавливаем
+      // именно пойманный code, не пересчитываем его.
+      var obj = JSON.parse(raw);
+      if (obj && typeof obj === 'object' && obj.day && obj.code) return obj;
+    } catch (e) {
+      // Старый формат — простая строка-дата без code. Считаем протухшим.
+    }
+    return null;
+  }
+
   function restoreCaught() {
-    var d = localStorageGet('orbit_caught');
-    if (d && d === todayKey(new Date()) && window.OrbitPromo) {
+    var obj = readCaughtStorage();
+    if (obj && obj.day === todayKey(new Date())) {
       live.caught = true;
-      live.code = window.OrbitPromo.codeFor(new Date());
+      live.caughtDay = obj.day;
+      live.code = obj.code;
     }
   }
 
