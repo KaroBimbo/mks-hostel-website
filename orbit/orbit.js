@@ -506,7 +506,7 @@
     var ics = window.OrbitPromo.ics({
       start: pass.rise, end: pass.set,
       title: I.icsTitle || 'МКС в вашем небе — поймать сигнал на mkshostel.ru',
-      description: 'Выйдите на улицу и посмотрите в небо — а потом поймайте сигнал на mkshostel.ru',
+      description: I.icsDescription || 'Выйдите на улицу и посмотрите в небо — а потом поймайте сигнал на mkshostel.ru',
       location: 'mkshostel.ru'
     });
     try {
