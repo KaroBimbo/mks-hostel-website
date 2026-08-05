@@ -479,6 +479,10 @@
     if (!pass || !window.OrbitPromo) return;
     var now = new Date();
     if (window.OrbitPromo.buttonState(now, pass) !== 'open') return;
+    // Защита от повторного срабатывания
+    if (live.caught && localStorageGet('orbit_caught') === todayKey(now)) {
+      return;
+    }
     live.caught = true;
     live.code = window.OrbitPromo.codeFor(now);
     localStorageSet('orbit_caught', todayKey(now));
@@ -534,11 +538,36 @@
     if (changed && opts.fireGoal) goal('orbit_city');
   }
 
+  function cleanCityLabel(s) {
+    // Trim leading/trailing whitespace
+    s = s.trim();
+    // Collapse multiple spaces
+    s = s.replace(/\s+/g, ' ');
+    // Truncate to 30 characters
+    if (s.length > 30) s = s.substring(0, 30);
+    // Capitalize first letter
+    if (s.length > 0) s = s.charAt(0).toUpperCase() + s.slice(1);
+    return s;
+  }
+
   function resolveCity(query) {
     var citySub = document.getElementById('orbit-city-sub');
     var q = (query || '').trim();
     if (!q || !window.OrbitCities) return;
+
+    // Try full query first
     var res = window.OrbitCities.find(q);
+    var useFirstToken = false;
+
+    // If full query didn't find, try first token (fallback)
+    if (!res) {
+      var tokens = q.split(/\s+/);
+      if (tokens.length > 1 || tokens[0].length < q.length) {
+        res = window.OrbitCities.find(tokens[0]);
+        useFirstToken = true;
+      }
+    }
+
     if (!res) {
       if (citySub) {
         citySub.textContent = 'не нашли такой город — попробуйте без сокращений';
@@ -550,7 +579,9 @@
       citySub.textContent = 'определим ваше небо';
       citySub.classList.remove('err');
     }
-    var label = q.charAt(0).toUpperCase() + q.slice(1);
+    // Use first token if fallback was used, otherwise use full query
+    var labelBase = useFirstToken ? q.split(/\s+/)[0] : q;
+    var label = cleanCityLabel(labelBase);
     setGuest({ lat: res.lat, lon: res.lon }, label, { persist: true, fireGoal: true });
   }
 
