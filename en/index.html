@@ -699,6 +699,167 @@
   <div class="strip-hint">← swipe →</div>
 </section>
 
+<section id="orbit" class="dock">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Live orbit</div>
+      <h2>The station is flying right now</h2>
+      <p class="lead">The real one. The very station our capsule hotel is named after. Track when it passes over your sky — and catch the signal: there's a promo code for a direct booking inside.</p>
+    </div>
+    <div class="orbit-inner">
+      <div class="inner">
+        <div class="mapwrap">
+          <div class="live"><span class="dot"></span>LIVE · REAL ORBIT</div>
+          <svg id="orbit-map" viewBox="0 30 800 300" preserveAspectRatio="xMidYMid meet" role="img" aria-label="World map showing the ISS position">
+            <defs>
+              <linearGradient id="orbit-ocean" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0" stop-color="#17456B"/>
+                <stop offset="0.38" stop-color="#0E3050"/>
+                <stop offset="0.60" stop-color="#081226"/>
+                <stop offset="1" stop-color="#060B16"/>
+              </linearGradient>
+              <linearGradient id="orbit-landday" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#66855E"/>
+                <stop offset="0.45" stop-color="#93855E"/>
+                <stop offset="0.78" stop-color="#5E7C52"/>
+                <stop offset="1" stop-color="#54704C"/>
+              </linearGradient>
+              <linearGradient id="orbit-pgold" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#F6D98A"/>
+                <stop offset="0.5" stop-color="#D9A441"/>
+                <stop offset="1" stop-color="#A8771F"/>
+              </linearGradient>
+            </defs>
+            <rect x="0" y="30" width="800" height="300" fill="url(#orbit-ocean)"/>
+            <path id="orbit-land" fill="url(#orbit-landday)" stroke="rgba(255,255,255,.20)" stroke-width="0.5" fill-rule="evenodd"/>
+            <path id="orbit-night" fill="#040814" fill-opacity="0.8" opacity=".9"/>
+            <path id="orbit-track" fill="none" stroke="#52C7FF" stroke-width="1.7" stroke-dasharray="6 7" class="glow" opacity=".8"/>
+            <path id="orbit-guest-line" fill="none" stroke="#8F7BFF" stroke-width="1.3" stroke-dasharray="3 4" class="vglow"/>
+            <g>
+              <circle cx="467" cy="67" r="4" fill="#52C7FF" class="glow"/>
+              <circle cx="467" cy="67" r="7" fill="none" stroke="#52C7FF" stroke-width="1">
+                <animate attributeName="r" values="6;18" dur="2.2s" repeatCount="indefinite"/>
+                <animate attributeName="opacity" values=".8;0" dur="2.2s" repeatCount="indefinite"/>
+              </circle>
+              <text x="458" y="55" text-anchor="end" font-family="Menlo,monospace" font-size="12" fill="#E9EEF9">MKS hotel · St. Petersburg</text>
+            </g>
+            <g id="orbit-guest-marker" class="vglow">
+              <circle r="4" fill="#8F7BFF"/>
+              <text y="-10" text-anchor="middle" font-family="Menlo,monospace" font-size="12" fill="#E9EEF9"></text>
+            </g>
+            <g id="orbit-iss" class="glow">
+              <circle r="15" fill="none" stroke="#52C7FF" stroke-width="1">
+                <animate attributeName="r" values="13;28" dur="2.4s" repeatCount="indefinite"/>
+                <animate attributeName="opacity" values=".65;0" dur="2.4s" repeatCount="indefinite"/>
+              </circle>
+              <g>
+                <rect x="-23" y="-0.8" width="46" height="1.6" fill="#C7D2EC"/>
+                <g fill="url(#orbit-pgold)" stroke="#FFE9B3" stroke-width="0.3">
+                  <rect x="-22.5" y="-13" width="3.4" height="11.6" rx="0.7"/>
+                  <rect x="-22.5" y="1.4" width="3.4" height="11.6" rx="0.7"/>
+                  <rect x="-18.1" y="-13" width="3.4" height="11.6" rx="0.7"/>
+                  <rect x="-18.1" y="1.4" width="3.4" height="11.6" rx="0.7"/>
+                  <rect x="14.7" y="-13" width="3.4" height="11.6" rx="0.7"/>
+                  <rect x="14.7" y="1.4" width="3.4" height="11.6" rx="0.7"/>
+                  <rect x="19.1" y="-13" width="3.4" height="11.6" rx="0.7"/>
+                  <rect x="19.1" y="1.4" width="3.4" height="11.6" rx="0.7"/>
+                </g>
+                <g fill="#FFFFFF">
+                  <rect x="-22.5" y="-13" width="3.4" height="11.6" rx="0.7"/>
+                  <rect x="-22.5" y="1.4" width="3.4" height="11.6" rx="0.7"/>
+                  <rect x="-18.1" y="-13" width="3.4" height="11.6" rx="0.7"/>
+                  <rect x="-18.1" y="1.4" width="3.4" height="11.6" rx="0.7"/>
+                  <rect x="14.7" y="-13" width="3.4" height="11.6" rx="0.7"/>
+                  <rect x="14.7" y="1.4" width="3.4" height="11.6" rx="0.7"/>
+                  <rect x="19.1" y="-13" width="3.4" height="11.6" rx="0.7"/>
+                  <rect x="19.1" y="1.4" width="3.4" height="11.6" rx="0.7"/>
+                  <animate attributeName="opacity" values="0;0.5;0" dur="2.6s" repeatCount="indefinite"/>
+                </g>
+                <g stroke="rgba(120,80,10,.45)" stroke-width="0.35">
+                  <line x1="-20.8" y1="-13" x2="-20.8" y2="13"/>
+                  <line x1="-16.4" y1="-13" x2="-16.4" y2="13"/>
+                  <line x1="16.4" y1="-13" x2="16.4" y2="13"/>
+                  <line x1="20.8" y1="-13" x2="20.8" y2="13"/>
+                </g>
+                <rect x="-8.2" y="-7" width="2" height="6" fill="#DDE6F5" opacity=".9"/>
+                <rect x="6.2" y="1" width="2" height="6" fill="#DDE6F5" opacity=".9"/>
+                <rect x="-1.5" y="-8" width="3" height="16" rx="1.5" fill="#F2F6FF"/>
+                <rect x="-4" y="-2.8" width="8" height="2.8" rx="1.3" fill="#D5DEF2"/>
+                <circle cx="0" cy="8.3" r="1.5" fill="#C7D2EC"/>
+              </g>
+            </g>
+          </svg>
+          <canvas id="orbit-canvas" aria-hidden="true"></canvas>
+          <div class="factwrap">
+            <div id="orbit-fact" class="fact"></div>
+          </div>
+        </div>
+
+        <div class="panel" id="orbit-panel">
+          <div class="pcell">
+            <div class="lab">Above our capsule hotel</div>
+            <div class="clock" id="orbit-hotel-clock">—<span class="col">:</span>—</div>
+            <div class="sub" id="orbit-hotel-sub">we'll calculate the next pass</div>
+          </div>
+          <div class="pcell">
+            <div class="lab">And where are you?</div>
+            <div class="cityrow">
+              <input id="orbit-city-input" class="cityin" type="text" placeholder="Enter your city" autocomplete="off">
+              <button id="orbit-geo" class="geo" type="button" disabled aria-label="Detect city by geolocation">📍</button>
+            </div>
+            <div class="sub" id="orbit-city-sub">we'll work out your sky</div>
+          </div>
+          <div class="pcell">
+            <div class="lab">In your sky</div>
+            <div class="clock vio" id="orbit-guest-clock">—<span class="col">:</span>—</div>
+            <div class="sub" id="orbit-guest-sub">enter your city first</div>
+            <button id="orbit-signal" class="sig waiting" type="button" disabled>wakes at --:--</button>
+            <a id="orbit-tobooking" class="btn small" href="https://reservationsteps.ru/rooms/index/ea21fb37-1ed7-4f28-902e-545dd8283dc3?lang=en" target="_blank" rel="noopener">Apply the promo code — pick dates</a>
+            <div class="sub">🎁 there's a promo code inside · button sleeps until the pass</div>
+            <button id="orbit-remind" class="rem" type="button" disabled>🔔 REMIND ME · ADD TO CALENDAR</button>
+          </div>
+        </div>
+
+        <div id="orbit-connect" class="connect">Enter your city — and we'll calculate when the station will appear in your sky 🛰</div>
+
+        <details id="orbit-where">
+          <summary>Where to look</summary>
+          <div class="where-body">
+            <svg width="150" height="150" viewBox="0 0 150 150" aria-hidden="true">
+              <circle cx="75" cy="75" r="66" fill="rgba(15,21,38,.6)" stroke="rgba(126,168,255,.3)"/>
+              <g font-family="Menlo,monospace" font-size="12" fill="#8E99B4" text-anchor="middle">
+                <text x="75" y="22" fill="#E9EEF9" font-weight="700">N</text>
+                <text x="132" y="80">E</text>
+                <text x="75" y="140">S</text>
+                <text x="18" y="80">W</text>
+              </g>
+              <g stroke="rgba(126,168,255,.25)"><line x1="75" y1="28" x2="75" y2="36"/>
+                <line x1="75" y1="114" x2="75" y2="122"/><line x1="28" y1="75" x2="36" y2="75"/>
+                <line x1="114" y1="75" x2="122" y2="75"/></g>
+              <path id="orbit-compass-path" d="M38,108 Q75,88 112,108" fill="none" stroke="#52C7FF"
+                    stroke-width="2" stroke-dasharray="4 5" class="glow"/>
+              <circle id="orbit-compass-dot" cx="38" cy="108" r="3.5" fill="#52C7FF" class="glow"/>
+              <text x="30" y="128" font-family="Menlo,monospace" font-size="9" fill="#52C7FF">appears</text>
+              <text x="94" y="128" font-family="Menlo,monospace" font-size="9" fill="#8E99B4">fades</text>
+              <g class="glow"><circle r="3" fill="#E9EEF9"/>
+                <animateMotion dur="5s" repeatCount="indefinite"><mpath href="#orbit-compass-path" xlink:href="#orbit-compass-path"/></animateMotion></g>
+            </svg>
+            <div class="txt">
+              <b>Where to look when the station appears</b>
+              <ol class="steps">
+                <li id="orbit-where-step1">Head outside and face the direction you're expecting it from — the compass will show you once we've worked out your sky.</li>
+                <li>The station will appear low over the horizon — like a <b>bright, fast star</b>, moving without blinking.</li>
+                <li id="orbit-where-step3">It will cross the sky in about <b>4 minutes</b> and fade near the horizon.</li>
+              </ol>
+              <div class="dim">The compass will show its path across your sky as soon as you enter your city.</div>
+            </div>
+          </div>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="faq" class="dock">
   <div class="wrap">
     <div class="reviews-row">
@@ -1029,3 +1190,43 @@
 })();
 </script>
 <!-- /Яндекс.Метрика -->
+<script>
+window.ORBIT_I18N = {
+  lang: 'en',
+  overUs: 'Above our capsule hotel', yourSky: 'In your sky',
+  today: 'today', tomorrow: 'tomorrow', inTime: 'in',
+  connect: 'The station will appear in your sky at {A}. Above our capsule hotel — at {B}. It has already connected us 🛰',
+  btnWaiting: 'wakes at {T}', btnOpen: '📡 CATCH THE SIGNAL', btnCaught: 'Promo code: {C}',
+  toBooking: 'Apply the promo code — pick dates', remind: '🔔 REMIND ME · ADD TO CALENDAR',
+  cityPlaceholder: 'Enter your city', whereTitle: 'Where to look',
+  icsTitle: 'The ISS in your sky — catch the signal at mkshostel.ru',
+  notFound: "Couldn't find that city — try without abbreviations",
+  citySub: "we'll work out your sky",
+  guestPoint: 'your location',
+  rumbs: ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW'],
+  whereStep1: "Head outside and face <b>{R}</b> — that's where it will appear.",
+  whereStep3: 'It will cross the sky in about <b>{M}</b> and fade near <b>{R}</b>.',
+  minuteWord: { one: 'minute', other: 'minutes' },
+  facts: [
+    '👨‍🚀 7 people are on board right now',
+    '😴 Astronauts sleep in capsules — just like our guests',
+    '🌅 The crew sees 16 sunrises every day',
+    '⚡ 27,600 km/h — St. Petersburg to Vladivostok in 15 minutes',
+    '📏 As big as a football field — 109 meters',
+    "💧 93% of water is recycled — yesterday's sweat is tomorrow's coffee",
+    '🔭 Visible from Earth with the naked eye — brighter than any star',
+    '🌀 One full orbit around Earth every 92 minutes',
+    '🌍 Built by 15 countries working together',
+    "📦 A sleeping cabin the size of a phone booth — and it's enough"
+  ]
+};
+</script>
+<script src="../orbit/world-path.js" defer></script>
+<script src="../orbit/vendor/satellite.min.js" defer></script>
+<script src="../orbit/tle-fallback.js" defer></script>
+<script src="../orbit/iss-core.js" defer></script>
+<script src="../orbit/sun.js" defer></script>
+<script src="../orbit/promo.js" defer></script>
+<script src="../orbit/cities.js" defer></script>
+<script src="../orbit/orbit.js" defer></script>
+<link rel="stylesheet" href="../orbit/orbit.css">

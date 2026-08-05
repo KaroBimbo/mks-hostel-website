@@ -699,6 +699,167 @@
   <div class="strip-hint">← 滑动浏览 →</div>
 </section>
 
+<section id="orbit" class="dock">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">实时轨道</div>
+      <h2>空间站正在飞行</h2>
+      <p class="lead">真实的空间站。我们的太空舱酒店正是以它命名。关注它何时飞过您的天空——捕捉信号，里面有直接预订的优惠码。</p>
+    </div>
+    <div class="orbit-inner">
+      <div class="inner">
+        <div class="mapwrap">
+          <div class="live"><span class="dot"></span>实时 · 真实轨道</div>
+          <svg id="orbit-map" viewBox="0 30 800 300" preserveAspectRatio="xMidYMid meet" role="img" aria-label="显示国际空间站位置的世界地图">
+            <defs>
+              <linearGradient id="orbit-ocean" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0" stop-color="#17456B"/>
+                <stop offset="0.38" stop-color="#0E3050"/>
+                <stop offset="0.60" stop-color="#081226"/>
+                <stop offset="1" stop-color="#060B16"/>
+              </linearGradient>
+              <linearGradient id="orbit-landday" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#66855E"/>
+                <stop offset="0.45" stop-color="#93855E"/>
+                <stop offset="0.78" stop-color="#5E7C52"/>
+                <stop offset="1" stop-color="#54704C"/>
+              </linearGradient>
+              <linearGradient id="orbit-pgold" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#F6D98A"/>
+                <stop offset="0.5" stop-color="#D9A441"/>
+                <stop offset="1" stop-color="#A8771F"/>
+              </linearGradient>
+            </defs>
+            <rect x="0" y="30" width="800" height="300" fill="url(#orbit-ocean)"/>
+            <path id="orbit-land" fill="url(#orbit-landday)" stroke="rgba(255,255,255,.20)" stroke-width="0.5" fill-rule="evenodd"/>
+            <path id="orbit-night" fill="#040814" fill-opacity="0.8" opacity=".9"/>
+            <path id="orbit-track" fill="none" stroke="#52C7FF" stroke-width="1.7" stroke-dasharray="6 7" class="glow" opacity=".8"/>
+            <path id="orbit-guest-line" fill="none" stroke="#8F7BFF" stroke-width="1.3" stroke-dasharray="3 4" class="vglow"/>
+            <g>
+              <circle cx="467" cy="67" r="4" fill="#52C7FF" class="glow"/>
+              <circle cx="467" cy="67" r="7" fill="none" stroke="#52C7FF" stroke-width="1">
+                <animate attributeName="r" values="6;18" dur="2.2s" repeatCount="indefinite"/>
+                <animate attributeName="opacity" values=".8;0" dur="2.2s" repeatCount="indefinite"/>
+              </circle>
+              <text x="458" y="55" text-anchor="end" font-family="Menlo,monospace" font-size="12" fill="#E9EEF9">MKS 酒店 · 圣彼得堡</text>
+            </g>
+            <g id="orbit-guest-marker" class="vglow">
+              <circle r="4" fill="#8F7BFF"/>
+              <text y="-10" text-anchor="middle" font-family="Menlo,monospace" font-size="12" fill="#E9EEF9"></text>
+            </g>
+            <g id="orbit-iss" class="glow">
+              <circle r="15" fill="none" stroke="#52C7FF" stroke-width="1">
+                <animate attributeName="r" values="13;28" dur="2.4s" repeatCount="indefinite"/>
+                <animate attributeName="opacity" values=".65;0" dur="2.4s" repeatCount="indefinite"/>
+              </circle>
+              <g>
+                <rect x="-23" y="-0.8" width="46" height="1.6" fill="#C7D2EC"/>
+                <g fill="url(#orbit-pgold)" stroke="#FFE9B3" stroke-width="0.3">
+                  <rect x="-22.5" y="-13" width="3.4" height="11.6" rx="0.7"/>
+                  <rect x="-22.5" y="1.4" width="3.4" height="11.6" rx="0.7"/>
+                  <rect x="-18.1" y="-13" width="3.4" height="11.6" rx="0.7"/>
+                  <rect x="-18.1" y="1.4" width="3.4" height="11.6" rx="0.7"/>
+                  <rect x="14.7" y="-13" width="3.4" height="11.6" rx="0.7"/>
+                  <rect x="14.7" y="1.4" width="3.4" height="11.6" rx="0.7"/>
+                  <rect x="19.1" y="-13" width="3.4" height="11.6" rx="0.7"/>
+                  <rect x="19.1" y="1.4" width="3.4" height="11.6" rx="0.7"/>
+                </g>
+                <g fill="#FFFFFF">
+                  <rect x="-22.5" y="-13" width="3.4" height="11.6" rx="0.7"/>
+                  <rect x="-22.5" y="1.4" width="3.4" height="11.6" rx="0.7"/>
+                  <rect x="-18.1" y="-13" width="3.4" height="11.6" rx="0.7"/>
+                  <rect x="-18.1" y="1.4" width="3.4" height="11.6" rx="0.7"/>
+                  <rect x="14.7" y="-13" width="3.4" height="11.6" rx="0.7"/>
+                  <rect x="14.7" y="1.4" width="3.4" height="11.6" rx="0.7"/>
+                  <rect x="19.1" y="-13" width="3.4" height="11.6" rx="0.7"/>
+                  <rect x="19.1" y="1.4" width="3.4" height="11.6" rx="0.7"/>
+                  <animate attributeName="opacity" values="0;0.5;0" dur="2.6s" repeatCount="indefinite"/>
+                </g>
+                <g stroke="rgba(120,80,10,.45)" stroke-width="0.35">
+                  <line x1="-20.8" y1="-13" x2="-20.8" y2="13"/>
+                  <line x1="-16.4" y1="-13" x2="-16.4" y2="13"/>
+                  <line x1="16.4" y1="-13" x2="16.4" y2="13"/>
+                  <line x1="20.8" y1="-13" x2="20.8" y2="13"/>
+                </g>
+                <rect x="-8.2" y="-7" width="2" height="6" fill="#DDE6F5" opacity=".9"/>
+                <rect x="6.2" y="1" width="2" height="6" fill="#DDE6F5" opacity=".9"/>
+                <rect x="-1.5" y="-8" width="3" height="16" rx="1.5" fill="#F2F6FF"/>
+                <rect x="-4" y="-2.8" width="8" height="2.8" rx="1.3" fill="#D5DEF2"/>
+                <circle cx="0" cy="8.3" r="1.5" fill="#C7D2EC"/>
+              </g>
+            </g>
+          </svg>
+          <canvas id="orbit-canvas" aria-hidden="true"></canvas>
+          <div class="factwrap">
+            <div id="orbit-fact" class="fact"></div>
+          </div>
+        </div>
+
+        <div class="panel" id="orbit-panel">
+          <div class="pcell">
+            <div class="lab">在我们的太空舱酒店上空</div>
+            <div class="clock" id="orbit-hotel-clock">—<span class="col">:</span>—</div>
+            <div class="sub" id="orbit-hotel-sub">计算下一次飞越时间</div>
+          </div>
+          <div class="pcell">
+            <div class="lab">您在哪里？</div>
+            <div class="cityrow">
+              <input id="orbit-city-input" class="cityin" type="text" placeholder="输入您的城市（拉丁字母）" autocomplete="off">
+              <button id="orbit-geo" class="geo" type="button" disabled aria-label="通过定位确定城市">📍</button>
+            </div>
+            <div class="sub" id="orbit-city-sub">我们将计算您的天空</div>
+          </div>
+          <div class="pcell">
+            <div class="lab">在您的天空中</div>
+            <div class="clock vio" id="orbit-guest-clock">—<span class="col">:</span>—</div>
+            <div class="sub" id="orbit-guest-sub">请先输入城市</div>
+            <button id="orbit-signal" class="sig waiting" type="button" disabled>将于 --:-- 苏醒</button>
+            <a id="orbit-tobooking" class="btn small" href="https://reservationsteps.ru/rooms/index/ea21fb37-1ed7-4f28-902e-545dd8283dc3?lang=en" target="_blank" rel="noopener">使用优惠码——选择日期</a>
+            <div class="sub">🎁 内含优惠码 · 飞越前按钮处于休眠状态</div>
+            <button id="orbit-remind" class="rem" type="button" disabled>🔔 提醒我 · 加入日历</button>
+          </div>
+        </div>
+
+        <div id="orbit-connect" class="connect">输入您的城市——我们将计算空间站何时出现在您的天空中 🛰</div>
+
+        <details id="orbit-where">
+          <summary>往哪里看</summary>
+          <div class="where-body">
+            <svg width="150" height="150" viewBox="0 0 150 150" aria-hidden="true">
+              <circle cx="75" cy="75" r="66" fill="rgba(15,21,38,.6)" stroke="rgba(126,168,255,.3)"/>
+              <g font-family="Menlo,monospace" font-size="12" fill="#8E99B4" text-anchor="middle">
+                <text x="75" y="22" fill="#E9EEF9" font-weight="700">北</text>
+                <text x="132" y="80">东</text>
+                <text x="75" y="140">南</text>
+                <text x="18" y="80">西</text>
+              </g>
+              <g stroke="rgba(126,168,255,.25)"><line x1="75" y1="28" x2="75" y2="36"/>
+                <line x1="75" y1="114" x2="75" y2="122"/><line x1="28" y1="75" x2="36" y2="75"/>
+                <line x1="114" y1="75" x2="122" y2="75"/></g>
+              <path id="orbit-compass-path" d="M38,108 Q75,88 112,108" fill="none" stroke="#52C7FF"
+                    stroke-width="2" stroke-dasharray="4 5" class="glow"/>
+              <circle id="orbit-compass-dot" cx="38" cy="108" r="3.5" fill="#52C7FF" class="glow"/>
+              <text x="30" y="128" font-family="Menlo,monospace" font-size="9" fill="#52C7FF">出现</text>
+              <text x="94" y="128" font-family="Menlo,monospace" font-size="9" fill="#8E99B4">消失</text>
+              <g class="glow"><circle r="3" fill="#E9EEF9"/>
+                <animateMotion dur="5s" repeatCount="indefinite"><mpath href="#orbit-compass-path" xlink:href="#orbit-compass-path"/></animateMotion></g>
+            </svg>
+            <div class="txt">
+              <b>空间站出现时该往哪里看</b>
+              <ol class="steps">
+                <li id="orbit-where-step1">走到户外，面向它即将出现的方向——一旦我们计算出您的天空，指南针会为您指示方向。</li>
+                <li>空间站将在地平线附近低空出现——像一颗<b>明亮快速的星星</b>，飞行时不闪烁。</li>
+                <li id="orbit-where-step3">它将在大约<b>4分钟</b>内划过天空，并在地平线附近消失。</li>
+              </ol>
+              <div class="dim">一旦您输入城市，指南针将显示它在您天空中的路径。</div>
+            </div>
+          </div>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="faq" class="dock">
   <div class="wrap">
     <div class="reviews-row">
@@ -1029,3 +1190,43 @@
 })();
 </script>
 <!-- /Яндекс.Метрика -->
+<script>
+window.ORBIT_I18N = {
+  lang: 'zh',
+  overUs: '在我们的太空舱酒店上空', yourSky: '在您的天空中',
+  today: '今天', tomorrow: '明天', inTime: '还有',
+  connect: '空间站将于 {A} 出现在您的天空。{B} 飞过我们的太空舱酒店。它已经把我们连在一起 🛰',
+  btnWaiting: '将于 {T} 苏醒', btnOpen: '📡 捕捉信号', btnCaught: '优惠码：{C}',
+  toBooking: '使用优惠码——选择日期', remind: '🔔 提醒我 · 加入日历',
+  cityPlaceholder: '输入您的城市（拉丁字母）', whereTitle: '往哪里看',
+  icsTitle: '空间站将出现在您的天空——到 mkshostel.ru 捕捉信号',
+  notFound: '未找到该城市——请尝试用拉丁字母输入，不要缩写',
+  citySub: '我们将计算您的天空',
+  guestPoint: '您的位置',
+  rumbs: ['北', '东北', '东', '东南', '南', '西南', '西', '西北'],
+  whereStep1: '走到户外，面向<b>{R}</b>方向——它将从那里出现。',
+  whereStep3: '它将在大约<b>{M}</b>内划过天空，并在<b>{R}</b>方向消失。',
+  minuteWord: { other: '分钟' },
+  facts: [
+    '👨‍🚀 目前有 7 名宇航员在空间站上',
+    '😴 宇航员睡在太空舱里——和我们的客人一样',
+    '🌅 乘组每天迎来 16 次日出',
+    '⚡ 时速 27,600 公里——圣彼得堡到符拉迪沃斯托克只需 15 分钟',
+    '📏 和一个足球场一样大——109 米',
+    '💧 93% 的水被回收利用',
+    '🔭 肉眼可见——比任何星星都亮',
+    '🌀 每 92 分钟绕地球一圈',
+    '🌍 由 15 个国家共同建造',
+    '📦 睡眠舱只有电话亭大小——但足够了'
+  ]
+};
+</script>
+<script src="../orbit/world-path.js" defer></script>
+<script src="../orbit/vendor/satellite.min.js" defer></script>
+<script src="../orbit/tle-fallback.js" defer></script>
+<script src="../orbit/iss-core.js" defer></script>
+<script src="../orbit/sun.js" defer></script>
+<script src="../orbit/promo.js" defer></script>
+<script src="../orbit/cities.js" defer></script>
+<script src="../orbit/orbit.js" defer></script>
+<link rel="stylesheet" href="../orbit/orbit.css">

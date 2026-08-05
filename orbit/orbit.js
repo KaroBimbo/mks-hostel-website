@@ -248,7 +248,7 @@
 
   // ── Task 7: город гостя, отсчёты, сигнал, промокод, .ics, Метрика ────
   var HOTEL_OBS = { lat: 59.95, lon: 30.3 };
-  var RUMBS = ['С', 'СВ', 'В', 'ЮВ', 'Ю', 'ЮЗ', 'З', 'СЗ'];
+  var RUMBS = ['С', 'СВ', 'В', 'ЮВ', 'Ю', 'ЮЗ', 'З', 'СЗ']; // фолбэк, если в i18n нет rumbs
   var DEMO = /(?:^|[?&])orbitDemo=1(?:&|$)/.test(window.location.search);
   var LOAD_TIME = new Date();
 
@@ -269,7 +269,9 @@
 
   function rumb(az) {
     var a = ((az % 360) + 360) % 360;
-    return RUMBS[Math.round(a / 45) % 8];
+    var I = i18n();
+    var R = (I.rumbs && I.rumbs.length === 8) ? I.rumbs : RUMBS;
+    return R[Math.round(a / 45) % 8];
   }
 
   function fmtClock(d) {
@@ -294,10 +296,13 @@
   }
 
   function pluralMin(n) {
-    var n10 = n % 10, n100 = n % 100;
-    if (n10 === 1 && n100 !== 11) return 'минуту';
-    if (n10 >= 2 && n10 <= 4 && (n100 < 10 || n100 >= 20)) return 'минуты';
-    return 'минут';
+    var I = i18n();
+    var words = I.minuteWord || { one: 'минуту', few: 'минуты', many: 'минут', other: 'минут' };
+    var cat = 'other';
+    try {
+      cat = new Intl.PluralRules(I.lang || 'ru').select(n);
+    } catch (e) {}
+    return words[cat] || words.other || words.many || words.few || words.one || '';
   }
 
   function todayKey(d) {
@@ -402,11 +407,15 @@
     if (!pass) return;
     var step1 = document.getElementById('orbit-where-step1');
     var step3 = document.getElementById('orbit-where-step3');
-    if (step1) step1.innerHTML = 'Выйдите на улицу и встаньте лицом на <b>' + rumb(pass.riseAz) + '</b> — оттуда она появится.';
+    var I = i18n();
+    if (step1) {
+      var t1 = I.whereStep1 || 'Выйдите на улицу и встаньте лицом на <b>{R}</b> — оттуда она появится.';
+      step1.innerHTML = t1.replace('{R}', rumb(pass.riseAz));
+    }
     if (step3) {
       var mins = Math.max(1, Math.round((pass.set.getTime() - pass.rise.getTime()) / 60000));
-      step3.innerHTML = 'Она пройдёт через небо примерно за <b>' + mins + ' ' + pluralMin(mins) +
-        '</b> и растает на стороне <b>' + rumb(pass.setAz) + '</b>.';
+      var t3 = I.whereStep3 || 'Она пройдёт через небо примерно за <b>{M}</b> и растает на стороне <b>{R}</b>.';
+      step3.innerHTML = t3.replace('{M}', mins + ' ' + pluralMin(mins)).replace('{R}', rumb(pass.setAz));
     }
     updateCompass(pass);
   }
@@ -552,6 +561,7 @@
 
   function resolveCity(query) {
     var citySub = document.getElementById('orbit-city-sub');
+    var I = i18n();
     var q = (query || '').trim();
     if (!q || !window.OrbitCities) return;
 
@@ -570,13 +580,13 @@
 
     if (!res) {
       if (citySub) {
-        citySub.textContent = 'не нашли такой город — попробуйте без сокращений';
+        citySub.textContent = I.notFound || 'не нашли такой город — попробуйте без сокращений';
         citySub.classList.add('err');
       }
       return;
     }
     if (citySub) {
-      citySub.textContent = 'определим ваше небо';
+      citySub.textContent = I.citySub || 'определим ваше небо';
       citySub.classList.remove('err');
     }
     // Use first token if fallback was used, otherwise use full query
@@ -589,10 +599,11 @@
     var cityInput = document.getElementById('orbit-city-input');
     if (!navigator.geolocation) { if (cityInput) cityInput.focus(); return; }
     navigator.geolocation.getCurrentPosition(function (pos) {
-      var label = 'ваша точка';
+      var I = i18n();
+      var label = I.guestPoint || 'ваша точка';
       if (cityInput) cityInput.value = label;
       var citySub = document.getElementById('orbit-city-sub');
-      if (citySub) { citySub.textContent = 'определим ваше небо'; citySub.classList.remove('err'); }
+      if (citySub) { citySub.textContent = I.citySub || 'определим ваше небо'; citySub.classList.remove('err'); }
       setGuest({ lat: pos.coords.latitude, lon: pos.coords.longitude }, label, { persist: true, fireGoal: true });
     }, function () {
       if (cityInput) cityInput.focus();
