@@ -1,0 +1,91 @@
+/* Живая орбита — стили секции. Основа: docs/superpowers/specs/assets/living-orbit-mockup-v8.html */
+#orbit .orbit-inner{border:1px solid rgba(126,168,255,.16);border-radius:16px;overflow:hidden}
+#orbit .orbit-inner *{box-sizing:border-box}
+#orbit .orbit-inner .inner{padding:26px 26px 22px}
+#orbit .lead{font:400 14px 'Avenir Next','Segoe UI',sans-serif;color:#8E99B4;margin:0 0 18px}
+
+#orbit .mapwrap{position:relative;border:1px solid rgba(126,168,255,.14);border-radius:12px;overflow:hidden;
+     background:#070B14;aspect-ratio:800/300}
+#orbit .mapwrap svg{display:block;width:100%;height:100%}
+#orbit-canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1}
+#orbit .glow{filter:drop-shadow(0 0 4px rgba(82,199,255,.75))}
+#orbit .vglow{filter:drop-shadow(0 0 4px rgba(143,123,255,.75))}
+
+#orbit .panel{display:flex;gap:14px;margin-top:14px;flex-wrap:wrap}
+#orbit .pcell{flex:1;min-width:200px;background:rgba(15,21,38,.75);border:1px solid rgba(126,168,255,.16);
+     border-radius:12px;padding:14px 16px}
+#orbit .pcell .lab{font:600 10px 'SF Mono',Menlo,monospace;letter-spacing:.16em;color:#8E99B4;text-transform:uppercase}
+#orbit .clock{font:700 24px 'SF Mono',Menlo,monospace;color:#E9EEF9;margin-top:6px}
+#orbit .clock .col{color:#52C7FF;animation:orbit-blinkc 1s steps(1) infinite}
+#orbit .clock.vio .col{color:#8F7BFF}
+@keyframes orbit-blinkc{0%,49%{opacity:1}50%,100%{opacity:.2}}
+#orbit .sub{font:500 11px 'SF Mono',Menlo,monospace;color:#8E99B4;margin-top:4px}
+
+#orbit .cityrow{display:flex;gap:8px;margin-top:8px}
+#orbit .cityin{flex:1;background:#070B14;border:1px solid rgba(126,168,255,.3);border-radius:8px;
+     padding:9px 12px;font:500 13px 'Avenir Next',sans-serif;color:#E9EEF9}
+#orbit .cityin::placeholder{color:#8E99B4}
+#orbit .geo{border:1px solid rgba(126,168,255,.3);border-radius:8px;background:rgba(82,199,255,.08);
+     padding:9px 11px;font-size:14px;cursor:pointer;color:inherit}
+#orbit .geo:disabled{cursor:default;opacity:.6}
+
+#orbit .sig{display:block;width:100%;margin-top:10px;padding:11px 22px;border:none;border-radius:10px;
+     font:700 13px 'SF Mono',Menlo,monospace;letter-spacing:.1em;color:#070B14;cursor:pointer;
+     background:linear-gradient(90deg,#52C7FF,#8F7BFF);
+     animation:orbit-btnpulse 1.6s ease-in-out infinite}
+@keyframes orbit-btnpulse{0%,100%{box-shadow:0 0 8px rgba(82,199,255,.45)}50%{box-shadow:0 0 24px rgba(143,123,255,.9)}}
+#orbit .sig.waiting{background:rgba(142,153,180,.18);color:#8E99B4;animation:none;cursor:default}
+#orbit .sig.caught{background:#52C7FF}
+#orbit .sig:disabled{cursor:default}
+#orbit .rem{display:block;width:100%;margin-top:8px;padding:9px;border-radius:999px;
+     border:1px solid rgba(126,168,255,.4);background:transparent;color:#52C7FF;
+     font:600 11px 'SF Mono',Menlo,monospace;letter-spacing:.08em;cursor:pointer}
+#orbit .rem:disabled{cursor:default;opacity:.7}
+
+#orbit .live{position:absolute;left:12px;top:12px;z-index:2;display:flex;align-items:center;gap:7px;
+     font:600 10px 'SF Mono',Menlo,monospace;letter-spacing:.14em;color:#E9EEF9;
+     background:rgba(15,21,38,.85);border:1px solid rgba(126,168,255,.25);
+     border-radius:999px;padding:6px 11px}
+#orbit .live .dot{width:7px;height:7px;border-radius:50%;background:#FF5A6E;
+     animation:orbit-livedot 1.4s ease-in-out infinite}
+@keyframes orbit-livedot{0%,100%{opacity:1;box-shadow:0 0 8px rgba(255,90,110,.9)}50%{opacity:.35;box-shadow:none}}
+
+#orbit .factwrap{position:absolute;left:50%;transform:translateX(-50%);bottom:14px;z-index:2;
+     width:58%;min-width:260px;height:54px;pointer-events:none}
+#orbit .fact{position:absolute;inset:0;display:flex;align-items:flex-end;justify-content:center;
+     text-align:center;font:500 13px 'Avenir Next','Segoe UI',sans-serif;color:#D8E7FF;line-height:1.45;
+     text-shadow:0 0 14px rgba(82,199,255,.55),0 1px 3px rgba(0,0,0,.8);
+     opacity:0;transform:translateY(10px);filter:blur(3px);
+     transition:opacity .5s ease,transform .5s ease,filter .5s ease}
+#orbit .fact.show{opacity:1;transform:none;filter:blur(0)}
+#orbit .fact b{color:#52C7FF;font-weight:600}
+
+#orbit .connect{font:500 13px 'Avenir Next',sans-serif;color:#E9EEF9;background:rgba(143,123,255,.1);
+     border:1px solid rgba(143,123,255,.35);border-radius:12px;padding:12px 16px;margin-top:14px;
+     text-align:center}
+#orbit .connect b{color:#8F7BFF}
+
+/* «куда смотреть» — details, summary стилизован как пункт FAQ (правила details/summary в index.html глобальные) */
+#orbit-where{margin-top:14px}
+#orbit-where .where-body{display:flex;gap:18px;align-items:center;padding:0 0 18px}
+#orbit-where .where-body svg{flex:none}
+#orbit-where .txt{flex:1;font:400 13.5px 'Avenir Next',sans-serif;color:#E9EEF9;line-height:1.65}
+#orbit-where .txt .dim{color:#8E99B4}
+#orbit-where .txt b{color:#52C7FF;font-weight:600}
+#orbit-where .steps{margin:8px 0 0;padding:0;list-style:none;counter-reset:st}
+#orbit-where .steps li{counter-increment:st;margin-top:6px;padding-left:30px;position:relative}
+#orbit-where .steps li::before{content:counter(st);position:absolute;left:0;top:1px;width:20px;height:20px;
+     border-radius:50%;border:1px solid rgba(82,199,255,.5);color:#52C7FF;
+     font:600 11px 'SF Mono',monospace;display:flex;align-items:center;justify-content:center}
+@media (max-width:640px){
+  #orbit-where .where-body{flex-direction:column}
+}
+
+@media (prefers-reduced-motion: reduce){
+  #orbit .glow, #orbit .vglow{filter:none}
+  #orbit *{animation:none !important}
+}
+@media (max-width:640px){
+  #orbit .fact{font-size:11.5px}
+  #orbit svg text{font-size:15px}
+}

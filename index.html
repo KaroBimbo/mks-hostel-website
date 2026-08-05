@@ -699,6 +699,166 @@
   <div class="strip-hint">← листайте →</div>
 </section>
 
+<section id="orbit" class="dock">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Живая орбита</div>
+      <h2>Станция сейчас в полёте</h2>
+      <p class="lead">Настоящая. Та самая, в честь которой назван наш капсульный отель. Следите, когда она пройдёт в вашем небе, — и поймайте сигнал: внутри промокод на прямую бронь.</p>
+    </div>
+    <div class="orbit-inner">
+      <div class="inner">
+        <div class="mapwrap">
+          <div class="live"><span class="dot"></span>LIVE · НАСТОЯЩАЯ ОРБИТА</div>
+          <svg id="orbit-map" viewBox="0 30 800 300" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Карта мира с положением МКС">
+            <defs>
+              <linearGradient id="orbit-ocean" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0" stop-color="#17456B"/>
+                <stop offset="0.38" stop-color="#0E3050"/>
+                <stop offset="0.60" stop-color="#081226"/>
+                <stop offset="1" stop-color="#060B16"/>
+              </linearGradient>
+              <linearGradient id="orbit-landday" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#66855E"/>
+                <stop offset="0.45" stop-color="#93855E"/>
+                <stop offset="0.78" stop-color="#5E7C52"/>
+                <stop offset="1" stop-color="#54704C"/>
+              </linearGradient>
+              <linearGradient id="orbit-nightgrad" x1="0.30" y1="0" x2="0.62" y2="0.03">
+                <stop offset="0.30" stop-color="#040814" stop-opacity="0"/>
+                <stop offset="0.62" stop-color="#040814" stop-opacity="0.84"/>
+                <stop offset="1" stop-color="#040814" stop-opacity="0.88"/>
+              </linearGradient>
+              <linearGradient id="orbit-pgold" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#F6D98A"/>
+                <stop offset="0.5" stop-color="#D9A441"/>
+                <stop offset="1" stop-color="#A8771F"/>
+              </linearGradient>
+            </defs>
+            <rect x="0" y="30" width="800" height="300" fill="url(#orbit-ocean)"/>
+            <path id="orbit-land" fill="url(#orbit-landday)" stroke="rgba(255,255,255,.20)" stroke-width="0.5" fill-rule="evenodd"/>
+            <path id="orbit-night" fill="url(#orbit-nightgrad)" opacity=".9"/>
+            <path id="orbit-track" fill="none" stroke="#52C7FF" stroke-width="1.7" stroke-dasharray="6 7" class="glow" opacity=".8"/>
+            <g>
+              <circle cx="467" cy="67" r="4" fill="#52C7FF" class="glow"/>
+              <circle cx="467" cy="67" r="7" fill="none" stroke="#52C7FF" stroke-width="1">
+                <animate attributeName="r" values="6;18" dur="2.2s" repeatCount="indefinite"/>
+                <animate attributeName="opacity" values=".8;0" dur="2.2s" repeatCount="indefinite"/>
+              </circle>
+              <text x="458" y="55" text-anchor="end" font-family="Menlo,monospace" font-size="12" fill="#E9EEF9">отель МКС · Петербург</text>
+            </g>
+            <g id="orbit-iss" class="glow">
+              <circle r="15" fill="none" stroke="#52C7FF" stroke-width="1">
+                <animate attributeName="r" values="13;28" dur="2.4s" repeatCount="indefinite"/>
+                <animate attributeName="opacity" values=".65;0" dur="2.4s" repeatCount="indefinite"/>
+              </circle>
+              <g>
+                <rect x="-23" y="-0.8" width="46" height="1.6" fill="#C7D2EC"/>
+                <g fill="url(#orbit-pgold)" stroke="#FFE9B3" stroke-width="0.3">
+                  <rect x="-22.5" y="-13" width="3.4" height="11.6" rx="0.7"/>
+                  <rect x="-22.5" y="1.4" width="3.4" height="11.6" rx="0.7"/>
+                  <rect x="-18.1" y="-13" width="3.4" height="11.6" rx="0.7"/>
+                  <rect x="-18.1" y="1.4" width="3.4" height="11.6" rx="0.7"/>
+                  <rect x="14.7" y="-13" width="3.4" height="11.6" rx="0.7"/>
+                  <rect x="14.7" y="1.4" width="3.4" height="11.6" rx="0.7"/>
+                  <rect x="19.1" y="-13" width="3.4" height="11.6" rx="0.7"/>
+                  <rect x="19.1" y="1.4" width="3.4" height="11.6" rx="0.7"/>
+                </g>
+                <g fill="#FFFFFF">
+                  <rect x="-22.5" y="-13" width="3.4" height="11.6" rx="0.7"/>
+                  <rect x="-22.5" y="1.4" width="3.4" height="11.6" rx="0.7"/>
+                  <rect x="-18.1" y="-13" width="3.4" height="11.6" rx="0.7"/>
+                  <rect x="-18.1" y="1.4" width="3.4" height="11.6" rx="0.7"/>
+                  <rect x="14.7" y="-13" width="3.4" height="11.6" rx="0.7"/>
+                  <rect x="14.7" y="1.4" width="3.4" height="11.6" rx="0.7"/>
+                  <rect x="19.1" y="-13" width="3.4" height="11.6" rx="0.7"/>
+                  <rect x="19.1" y="1.4" width="3.4" height="11.6" rx="0.7"/>
+                  <animate attributeName="opacity" values="0;0.5;0" dur="2.6s" repeatCount="indefinite"/>
+                </g>
+                <g stroke="rgba(120,80,10,.45)" stroke-width="0.35">
+                  <line x1="-20.8" y1="-13" x2="-20.8" y2="13"/>
+                  <line x1="-16.4" y1="-13" x2="-16.4" y2="13"/>
+                  <line x1="16.4" y1="-13" x2="16.4" y2="13"/>
+                  <line x1="20.8" y1="-13" x2="20.8" y2="13"/>
+                </g>
+                <rect x="-8.2" y="-7" width="2" height="6" fill="#DDE6F5" opacity=".9"/>
+                <rect x="6.2" y="1" width="2" height="6" fill="#DDE6F5" opacity=".9"/>
+                <rect x="-1.5" y="-8" width="3" height="16" rx="1.5" fill="#F2F6FF"/>
+                <rect x="-4" y="-2.8" width="8" height="2.8" rx="1.3" fill="#D5DEF2"/>
+                <circle cx="0" cy="8.3" r="1.5" fill="#C7D2EC"/>
+              </g>
+            </g>
+          </svg>
+          <canvas id="orbit-canvas" aria-hidden="true"></canvas>
+          <div class="factwrap">
+            <div id="orbit-fact" class="fact"></div>
+          </div>
+        </div>
+
+        <div class="panel" id="orbit-panel">
+          <div class="pcell">
+            <div class="lab">Над нашим капсульным отелем</div>
+            <div class="clock">—<span class="col">:</span>—</div>
+            <div class="sub">рассчитаем ближайший пролёт</div>
+          </div>
+          <div class="pcell">
+            <div class="lab">А вы где?</div>
+            <div class="cityrow">
+              <input id="orbit-city-input" class="cityin" type="text" placeholder="Введите свой город" autocomplete="off">
+              <button id="orbit-geo" class="geo" type="button" disabled aria-label="Определить город по геолокации">📍</button>
+            </div>
+            <div class="sub">определим ваше небо</div>
+          </div>
+          <div class="pcell">
+            <div class="lab">В вашем небе</div>
+            <div class="clock vio">—<span class="col">:</span>—</div>
+            <div class="sub">сначала укажите город</div>
+            <button id="orbit-signal" class="sig waiting" type="button" disabled>оживёт в --:--</button>
+            <div class="sub">🎁 внутри — промокод · до пролёта кнопка спит</div>
+            <button id="orbit-remind" class="rem" type="button" disabled>🔔 НАПОМНИТЬ · В КАЛЕНДАРЬ</button>
+          </div>
+        </div>
+
+        <div id="orbit-connect" class="connect">Укажите город — и мы посчитаем, когда станция появится в вашем небе 🛰</div>
+
+        <details id="orbit-where">
+          <summary>Куда смотреть</summary>
+          <div class="where-body">
+            <svg width="150" height="150" viewBox="0 0 150 150" aria-hidden="true">
+              <circle cx="75" cy="75" r="66" fill="rgba(15,21,38,.6)" stroke="rgba(126,168,255,.3)"/>
+              <g font-family="Menlo,monospace" font-size="12" fill="#8E99B4" text-anchor="middle">
+                <text x="75" y="22" fill="#E9EEF9" font-weight="700">С</text>
+                <text x="132" y="80">В</text>
+                <text x="75" y="140">Ю</text>
+                <text x="18" y="80">З</text>
+              </g>
+              <g stroke="rgba(126,168,255,.25)"><line x1="75" y1="28" x2="75" y2="36"/>
+                <line x1="75" y1="114" x2="75" y2="122"/><line x1="28" y1="75" x2="36" y2="75"/>
+                <line x1="114" y1="75" x2="122" y2="75"/></g>
+              <path id="orbit-compass-path" d="M38,108 Q75,88 112,108" fill="none" stroke="#52C7FF"
+                    stroke-width="2" stroke-dasharray="4 5" class="glow"/>
+              <circle cx="38" cy="108" r="3.5" fill="#52C7FF" class="glow"/>
+              <text x="30" y="128" font-family="Menlo,monospace" font-size="9" fill="#52C7FF">появится</text>
+              <text x="94" y="128" font-family="Menlo,monospace" font-size="9" fill="#8E99B4">исчезнет</text>
+              <g class="glow"><circle r="3" fill="#E9EEF9"/>
+                <animateMotion dur="5s" repeatCount="indefinite" path="M38,108 Q75,88 112,108"/></g>
+            </svg>
+            <div class="txt">
+              <b>Куда смотреть, когда станция появится</b>
+              <ol class="steps">
+                <li>Выйдите на улицу и встаньте лицом туда, откуда её ждать, — компас подскажет сторону, когда мы посчитаем ваше небо.</li>
+                <li>Станция появится невысоко над горизонтом — как <b>яркая быстрая звезда</b>, летит без мигания.</li>
+                <li>Она пройдёт через небо примерно за <b>4 минуты</b> и растает у горизонта.</li>
+              </ol>
+              <div class="dim">Компас покажет её путь по вашему небу, как только вы укажете город.</div>
+            </div>
+          </div>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="faq" class="dock">
   <div class="wrap">
     <div class="reviews-row">
@@ -1029,3 +1189,57 @@
 })();
 </script>
 <!-- /Яндекс.Метрика -->
+
+<script>
+window.ORBIT_I18N = {
+  lang: 'ru',
+  overUs: 'Над нашим капсульным отелем', yourSky: 'В вашем небе',
+  today: 'сегодня', tomorrow: 'завтра', inTime: 'через',
+  connect: 'В вашем небе станция появится в {A}. Над нашим капсульным отелем — в {B}. Она нас уже связала 🛰',
+  btnWaiting: 'оживёт в {T}', btnOpen: '📡 ПОЙМАТЬ СИГНАЛ', btnCaught: 'Промокод: {C}',
+  toBooking: 'Применить промокод — выбрать даты', remind: '🔔 НАПОМНИТЬ · В КАЛЕНДАРЬ',
+  cityPlaceholder: 'Введите свой город', whereTitle: 'Куда смотреть',
+  icsTitle: 'МКС в вашем небе — поймать сигнал на mkshostel.ru',
+  facts: [
+    '👨‍🚀 Сейчас на борту — 7 человек из 3 стран',
+    '😴 Космонавты спят в капсулах — совсем как наши гости',
+    '🌅 Экипаж встречает 16 рассветов каждые сутки',
+    '⚡ 27 600 км/ч — Петербург→Владивосток за 15 минут',
+    '📏 Размером с футбольное поле — 109 метров',
+    '💧 Вода перерабатывается на 93% — вчерашний пот станет завтрашним кофе',
+    '🔭 Её видно с Земли невооружённым глазом — ярче любой звезды',
+    '🏠 Люди живут на станции без перерыва с 2000 года',
+    '🌀 Полный виток вокруг Земли — за 92 минуты',
+    '🏃 2 часа спорта в день — обязательны для каждого на борту',
+    '🚀 За сутки пролетает 712 000 км — как до Луны и обратно',
+    '🌍 Станцию строили 15 стран — её собрал весь мир',
+    '📡 Золотые панели дают 120 киловатт солнечной энергии',
+    '🧪 На борту проведено больше 3 000 экспериментов',
+    '📈 За полгода в невесомости космонавты вырастают на 3–5 см',
+    '⚖️ Весит 420 тонн — и всё это летит у вас над головой',
+    '🍎 Свежие фрукты — самый желанный груз для экипажа',
+    '☕ Кофе пьют через трубочку — иначе капли разлетятся по станции',
+    '🚿 Душа на борту нет — влажные полотенца и несмываемый шампунь',
+    '🛠 Больше 270 выходов в открытый космос — сборка и ремонт',
+    '🛰 Первый модуль «Заря» отправился в космос в 1998 году',
+    '🌐 На станции побывало больше 280 человек из 23 стран',
+    '📷 Экипажи сделали миллионы снимков Земли — Петербург есть на многих',
+    '🌱 На борту выращивают салат, перец чили и даже цветы',
+    '📦 Спальная капсула космонавта — размером с телефонную будку',
+    '🦾 Рука-робот длиной 17 метров ловит грузовые корабли на лету',
+    '🕯 В невесомости пламя горит идеальным шариком',
+    '🚽 Космический туалет обошёлся в 23 миллиона долларов',
+    '🌡 За бортом: −150° в тени и +120° на солнце',
+    '⏱ Время на орбите идёт чуть медленнее — космонавты возвращаются моложе'
+  ]
+};
+</script>
+<script src="orbit/world-path.js" defer></script>
+<script src="orbit/vendor/satellite.min.js" defer></script>
+<script src="orbit/tle-fallback.js" defer></script>
+<script src="orbit/iss-core.js" defer></script>
+<script src="orbit/sun.js" defer></script>
+<script src="orbit/promo.js" defer></script>
+<script src="orbit/cities.js" defer></script>
+<script src="orbit/orbit.js" defer></script>
+<link rel="stylesheet" href="orbit/orbit.css">
