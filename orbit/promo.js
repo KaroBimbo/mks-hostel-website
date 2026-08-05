@@ -2,8 +2,13 @@
   'use strict';
   var ALPHA = 'ABCEHKMPTXY23456789'; // без похожих символов
   var SALT = 'MKS-ORBIT-2026';
+  function weekMonday(d) { // понедельник недели даты (по UTC) — один код на неделю
+    var t = new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate()));
+    t.setUTCDate(t.getUTCDate() - ((t.getUTCDay() + 6) % 7));
+    return t;
+  }
   function codeFor(d) {
-    var key = d.toISOString().slice(0, 10) + SALT;
+    var key = weekMonday(d).toISOString().slice(0, 10) + SALT;
     var hsh = 2166136261;
     for (var i = 0; i < key.length; i++) { hsh ^= key.charCodeAt(i); hsh = Math.imul(hsh, 16777619) >>> 0; }
     var out = '';
@@ -27,6 +32,6 @@
     if (t <= pass.set.getTime()) return 'open';
     return 'passed';
   }
-  root.OrbitPromo = { codeFor: codeFor, ics: ics, buttonState: buttonState };
+  root.OrbitPromo = { codeFor: codeFor, weekMonday: weekMonday, ics: ics, buttonState: buttonState };
 })(typeof window !== 'undefined' ? window : globalThis);
 if (typeof module !== 'undefined') module.exports = globalThis.OrbitPromo;
