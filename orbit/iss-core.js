@@ -5,6 +5,7 @@
   function deg(r){ return r * 180 / Math.PI; }
   function normLon(l){ return ((l + 540) % 360) - 180; }
   function geo(d){
+    if (!rec) return null;
     var pv = sat.propagate(rec, d);
     if (!pv.position) return null;
     var gmst = sat.gstime(d), g = sat.eciToGeodetic(pv.position, gmst);
@@ -12,6 +13,7 @@
     return { lat: deg(g.latitude), lon: normLon(deg(g.longitude)), altKm: g.height, velKms: vel };
   }
   function elevAz(obs, d){
+    if (!rec) return null;
     var pv = sat.propagate(rec, d);
     if (!pv.position) return null;
     var gmst = sat.gstime(d);
@@ -30,8 +32,16 @@
   }
   root.IssCore = {
     setTle: function (l1, l2) {
-      try { var r = sat.twoline2satrec(l1, l2); if (r.error) return false; rec = r; return true; }
-      catch (e) { return false; }
+      try {
+        if (typeof l1 !== 'string' || typeof l2 !== 'string') return false;
+        if (l1.indexOf('1 ') !== 0 || l2.indexOf('2 ') !== 0 || l1.length < 69 || l2.length < 69) return false;
+        var r = sat.twoline2satrec(l1, l2);
+        if (r.error) return false;
+        var probe = sat.propagate(r, new Date());
+        if (!probe || !probe.position || !isFinite(probe.position.x)) return false;
+        rec = r;
+        return true;
+      } catch (e) { return false; }
     },
     current: function (d) { return geo(d || new Date()); },
     groundTrack: function (from, minutes, stepSec) {
@@ -45,6 +55,7 @@
     predictPasses: function (obs, from, hours) {
       var passes = [], step = 30000, end = from.getTime() + hours * 3600000;
       var prev = elevAz(obs, from), rise = null, best = null;
+      if (!prev) return passes;
       for (var t = from.getTime() + step; t <= end; t += step) {
         var d = new Date(t), cur = elevAz(obs, d);
         if (!cur) continue;
