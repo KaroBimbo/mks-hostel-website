@@ -29,6 +29,13 @@
 #orbit .geo{border:1px solid rgba(126,168,255,.3);border-radius:8px;background:rgba(82,199,255,.08);
      padding:9px 11px;font-size:14px;cursor:pointer;color:inherit}
 #orbit .geo:disabled{cursor:default;opacity:.6}
+#orbit #orbit-city-sub.err{color:#FF8FA0}
+
+#orbit #orbit-guest-line,#orbit #orbit-guest-marker{opacity:0;transition:opacity .4s ease}
+#orbit #orbit-guest-marker.show,#orbit #orbit-guest-line.show{opacity:1}
+
+#orbit #orbit-tobooking{display:none;text-align:center;margin-top:8px}
+#orbit #orbit-tobooking.show{display:block}
 
 #orbit .sig{display:block;width:100%;margin-top:10px;padding:11px 22px;border:none;border-radius:10px;
      font:700 13px 'SF Mono',Menlo,monospace;letter-spacing:.1em;color:#070B14;cursor:pointer;

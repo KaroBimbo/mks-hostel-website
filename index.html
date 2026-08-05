@@ -734,6 +734,7 @@
             <path id="orbit-land" fill="url(#orbit-landday)" stroke="rgba(255,255,255,.20)" stroke-width="0.5" fill-rule="evenodd"/>
             <path id="orbit-night" fill="#040814" fill-opacity="0.8" opacity=".9"/>
             <path id="orbit-track" fill="none" stroke="#52C7FF" stroke-width="1.7" stroke-dasharray="6 7" class="glow" opacity=".8"/>
+            <path id="orbit-guest-line" fill="none" stroke="#8F7BFF" stroke-width="1.3" stroke-dasharray="3 4" class="vglow"/>
             <g>
               <circle cx="467" cy="67" r="4" fill="#52C7FF" class="glow"/>
               <circle cx="467" cy="67" r="7" fill="none" stroke="#52C7FF" stroke-width="1">
@@ -741,6 +742,10 @@
                 <animate attributeName="opacity" values=".8;0" dur="2.2s" repeatCount="indefinite"/>
               </circle>
               <text x="458" y="55" text-anchor="end" font-family="Menlo,monospace" font-size="12" fill="#E9EEF9">отель МКС · Петербург</text>
+            </g>
+            <g id="orbit-guest-marker" class="vglow">
+              <circle r="4" fill="#8F7BFF"/>
+              <text y="-10" text-anchor="middle" font-family="Menlo,monospace" font-size="12" fill="#E9EEF9"></text>
             </g>
             <g id="orbit-iss" class="glow">
               <circle r="15" fill="none" stroke="#52C7FF" stroke-width="1">
@@ -793,8 +798,8 @@
         <div class="panel" id="orbit-panel">
           <div class="pcell">
             <div class="lab">Над нашим капсульным отелем</div>
-            <div class="clock">—<span class="col">:</span>—</div>
-            <div class="sub">рассчитаем ближайший пролёт</div>
+            <div class="clock" id="orbit-hotel-clock">—<span class="col">:</span>—</div>
+            <div class="sub" id="orbit-hotel-sub">рассчитаем ближайший пролёт</div>
           </div>
           <div class="pcell">
             <div class="lab">А вы где?</div>
@@ -802,13 +807,14 @@
               <input id="orbit-city-input" class="cityin" type="text" placeholder="Введите свой город" autocomplete="off">
               <button id="orbit-geo" class="geo" type="button" disabled aria-label="Определить город по геолокации">📍</button>
             </div>
-            <div class="sub">определим ваше небо</div>
+            <div class="sub" id="orbit-city-sub">определим ваше небо</div>
           </div>
           <div class="pcell">
             <div class="lab">В вашем небе</div>
-            <div class="clock vio">—<span class="col">:</span>—</div>
-            <div class="sub">сначала укажите город</div>
+            <div class="clock vio" id="orbit-guest-clock">—<span class="col">:</span>—</div>
+            <div class="sub" id="orbit-guest-sub">сначала укажите город</div>
             <button id="orbit-signal" class="sig waiting" type="button" disabled>оживёт в --:--</button>
+            <a id="orbit-tobooking" class="btn small" href="https://reservationsteps.ru/rooms/index/ea21fb37-1ed7-4f28-902e-545dd8283dc3?lang=ru" target="_blank" rel="noopener">Применить промокод — выбрать даты</a>
             <div class="sub">🎁 внутри — промокод · до пролёта кнопка спит</div>
             <button id="orbit-remind" class="rem" type="button" disabled>🔔 НАПОМНИТЬ · В КАЛЕНДАРЬ</button>
           </div>
@@ -832,18 +838,18 @@
                 <line x1="114" y1="75" x2="122" y2="75"/></g>
               <path id="orbit-compass-path" d="M38,108 Q75,88 112,108" fill="none" stroke="#52C7FF"
                     stroke-width="2" stroke-dasharray="4 5" class="glow"/>
-              <circle cx="38" cy="108" r="3.5" fill="#52C7FF" class="glow"/>
+              <circle id="orbit-compass-dot" cx="38" cy="108" r="3.5" fill="#52C7FF" class="glow"/>
               <text x="30" y="128" font-family="Menlo,monospace" font-size="9" fill="#52C7FF">появится</text>
               <text x="94" y="128" font-family="Menlo,monospace" font-size="9" fill="#8E99B4">исчезнет</text>
               <g class="glow"><circle r="3" fill="#E9EEF9"/>
-                <animateMotion dur="5s" repeatCount="indefinite" path="M38,108 Q75,88 112,108"/></g>
+                <animateMotion dur="5s" repeatCount="indefinite"><mpath href="#orbit-compass-path" xlink:href="#orbit-compass-path"/></animateMotion></g>
             </svg>
             <div class="txt">
               <b>Куда смотреть, когда станция появится</b>
               <ol class="steps">
-                <li>Выйдите на улицу и встаньте лицом туда, откуда её ждать, — компас подскажет сторону, когда мы посчитаем ваше небо.</li>
+                <li id="orbit-where-step1">Выйдите на улицу и встаньте лицом туда, откуда её ждать, — компас подскажет сторону, когда мы посчитаем ваше небо.</li>
                 <li>Станция появится невысоко над горизонтом — как <b>яркая быстрая звезда</b>, летит без мигания.</li>
-                <li>Она пройдёт через небо примерно за <b>4 минуты</b> и растает у горизонта.</li>
+                <li id="orbit-where-step3">Она пройдёт через небо примерно за <b>4 минуты</b> и растает у горизонта.</li>
               </ol>
               <div class="dim">Компас покажет её путь по вашему небу, как только вы укажете город.</div>
             </div>
