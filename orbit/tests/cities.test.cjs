@@ -3,10 +3,18 @@ globalThis.window = globalThis;
 require('../cities.js');
 const C = globalThis.OrbitCities;
 test('находит ключевые города по-русски и по-английски', () => {
-  for (const q of ['мурманск', 'владивосток', 'moscow', 'beijing', 'санкт-петербург']) {
+  for (const q of ['мурманск', 'владивосток', 'moscow', 'beijing', 'berlin', 'санкт-петербург']) {
     const hit = C.find(q);
     assert.ok(hit, 'не найден: ' + q);
     assert.ok(Math.abs(hit.lat) <= 90 && Math.abs(hit.lon) <= 180);
+  }
+});
+test('находит города Беларуси, Казахстана через кириллицу и нерегулярные написания', () => {
+  const cities = ['улан-удэ', 'ростов-на-дону'];
+  for (const q of cities) {
+    const hit = C.find(q);
+    assert.ok(hit, 'не найден: ' + q);
+    assert.ok(Math.abs(hit.lat) <= 90 && Math.abs(hit.lon) <= 180, 'плохие координаты: ' + q);
   }
 });
 test('мусор не находит', () => { assert.equal(C.find('щщщ12'), null); });

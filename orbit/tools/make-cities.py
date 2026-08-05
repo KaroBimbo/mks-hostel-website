@@ -30,6 +30,19 @@ RU_SYNONYMS = {
 RU_ALIASES = {
     "петербург": "saint petersburg",
     "спб": "saint petersburg",
+    "шымкент": "shymkent",
+    "астана": "astana",
+    "атырау": "atyrau",
+    "павлодар": "pavlodar",
+    "тараз": "taraz",
+    "семей": "semey",
+    "уланудэ": "ulan-ude",
+    "улан-удэ": "ulan-ude",
+    "йошкарола": "yoshkar-ola",
+    "йошкар-ола": "yoshkar-ola",
+    "нижний тагил": "nizhniy tagil",
+    "нижнийтагил": "nizhniy tagil",
+    "ростов": "rostov",
 }
 
 rows = []
@@ -71,6 +84,16 @@ var C=window.ORBIT_CITIES,best=null;
 for(var i=0;i<C.length;i++){var a=norm(C[i][0]),b=norm(C[i][1]);
 if(a===qN||b===qN||(qLatN!==null&&(a===qLatN||b===qLatN)))return{nameRu:C[i][1],nameEn:C[i][0],lat:C[i][2],lon:C[i][3]};
 if(!best&&(a.indexOf(qN)===0||b.indexOf(qN)===0||(qLatN!==null&&(a.indexOf(qLatN)===0||b.indexOf(qLatN)===0))))best={nameRu:C[i][1],nameEn:C[i][0],lat:C[i][2],lon:C[i][3]};}
+if(!best&&q.length>4&&/[ -]/.test(q)){var fst=q.split(/[ -]/)[0],fstLat=null;
+if(/[а-я]/.test(fst)){var TR=[['щ','shch'],['ж','zh'],['х','kh'],['ц','ts'],['ч','ch'],['ш','sh'],['ю','yu'],['я','ya'],
+['а','a'],['б','b'],['в','v'],['г','g'],['д','d'],['е','e'],['з','z'],['и','i'],['й','y'],['к','k'],
+['л','l'],['м','m'],['н','n'],['о','o'],['п','p'],['р','r'],['с','s'],['т','t'],['у','u'],['ф','f'],
+['ы','y'],['э','e'],['ь',''],['ъ','']];
+fstLat=fst;for(var t=0;t<TR.length;t++){fstLat=fstLat.split(TR[t][0]).join(TR[t][1]);}}
+var fstN=norm(fst),fstLatN=fstLat!==null?norm(fstLat):null;
+for(var i=0;i<C.length;i++){var a=norm(C[i][0]),b=norm(C[i][1]);
+if(a===fstN||b===fstN||(fstLatN!==null&&(a===fstLatN||b===fstLatN)))return{nameRu:C[i][1],nameEn:C[i][0],lat:C[i][2],lon:C[i][3]};
+if(!best&&(a.indexOf(fstN)===0||b.indexOf(fstN)===0||(fstLatN!==null&&(a.indexOf(fstLatN)===0||b.indexOf(fstLatN)===0))))best={nameRu:C[i][1],nameEn:C[i][0],lat:C[i][2],lon:C[i][3]};}}
 return best;}};\n""")
 
 print("cities:", len(rows))
