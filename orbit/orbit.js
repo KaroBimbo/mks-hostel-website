@@ -250,6 +250,11 @@
   function init() {
     var root = document.getElementById('orbit');
     if (!root) return;
+    if (reducedMotion()) {
+      document.querySelectorAll('#orbit svg').forEach(function (s) {
+        if (s.pauseAnimations) s.pauseAnimations();
+      });
+    }
     initTle();
     drawMap();
     updateNight();
