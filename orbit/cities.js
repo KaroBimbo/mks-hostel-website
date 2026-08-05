@@ -5,8 +5,19 @@ window.OrbitCities={find:function(q){q=(q||'').trim().toLowerCase().replace(/ё/
 if(q.length<2)return null;
 var AL=window.ORBIT_CITY_ALIASES||{};
 if(Object.prototype.hasOwnProperty.call(AL,q))q=AL[q];
+var qLat=null;
+if(/[а-я]/.test(q)){
+var TR=[['щ','shch'],['ж','zh'],['х','kh'],['ц','ts'],['ч','ch'],['ш','sh'],['ю','yu'],['я','ya'],
+['а','a'],['б','b'],['в','v'],['г','g'],['д','d'],['е','e'],['з','z'],['и','i'],['й','y'],['к','k'],
+['л','l'],['м','m'],['н','n'],['о','o'],['п','p'],['р','r'],['с','s'],['т','t'],['у','u'],['ф','f'],
+['ы','y'],['э','e'],['ь',''],['ъ','']];
+qLat=q;
+for(var t=0;t<TR.length;t++){qLat=qLat.split(TR[t][0]).join(TR[t][1]);}
+}
+function norm(s){return s.replace(/ё/g,'е').replace(/[ьъ]/g,'');}
+var qN=norm(q),qLatN=qLat!==null?norm(qLat):null;
 var C=window.ORBIT_CITIES,best=null;
-for(var i=0;i<C.length;i++){var a=C[i][0].replace(/ё/g,'е'),b=C[i][1].replace(/ё/g,'е');
-if(a===q||b===q)return{nameRu:C[i][1],nameEn:C[i][0],lat:C[i][2],lon:C[i][3]};
-if(!best&&(a.indexOf(q)===0||b.indexOf(q)===0))best={nameRu:C[i][1],nameEn:C[i][0],lat:C[i][2],lon:C[i][3]};}
+for(var i=0;i<C.length;i++){var a=norm(C[i][0]),b=norm(C[i][1]);
+if(a===qN||b===qN||(qLatN!==null&&(a===qLatN||b===qLatN)))return{nameRu:C[i][1],nameEn:C[i][0],lat:C[i][2],lon:C[i][3]};
+if(!best&&(a.indexOf(qN)===0||b.indexOf(qN)===0||(qLatN!==null&&(a.indexOf(qLatN)===0||b.indexOf(qLatN)===0))))best={nameRu:C[i][1],nameEn:C[i][0],lat:C[i][2],lon:C[i][3]};}
 return best;}};
