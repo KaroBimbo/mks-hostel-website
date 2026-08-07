@@ -278,7 +278,7 @@
   function i18n() { return window.ORBIT_I18N || {}; }
 
   function goal(name) {
-    if (typeof ym === 'function') ym(109025350, 'reachGoal', name);
+    if (typeof ym === 'function') ym(111393611, 'reachGoal', name);
   }
 
   function rumb(az) {
